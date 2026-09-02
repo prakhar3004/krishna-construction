@@ -11,9 +11,9 @@ export class ConstructionDataService {
   readonly invocation = '!! Jai Guru Ji !!';
   readonly primaryPhone = '9717077387';
   readonly secondaryPhone = '7982100504';
-  readonly fullAddress = 'Office No. 420, 4th Floor, Soho Precision Tower, Sector-67, Gurugram, Haryana';
-  readonly googleMapsUrl = 'https://maps.google.com/?q=Soho+Precision+Tower+Sector+67+Gurugram';
-  readonly email = 'contact@krishnaconstructiongurgaon.com';
+  readonly fullAddress = 'Office No. 420, 4th Floor, Soho Precision Tower, Gurugram, Delhi NCR';
+  readonly googleMapsUrl = 'https://maps.google.com/?q=Soho+Precision+Tower+Gurugram';
+  readonly email = 'contact@krishnaconstructiondelhincr.com';
 
   // Calculator State Signals
   readonly selectedPlotSqYards = signal<number>(250);
@@ -279,7 +279,7 @@ export class ConstructionDataService {
 
   // Helper to construct direct WhatsApp URL
   getWhatsAppUrl(customMessage?: string): string {
-    const defaultMsg = `Hello Naveen Ji, I am visiting the Krishna Construction website (Ref: Soho Precision Tower, Sector-67 Gurugram). I would like to inquire regarding Turnkey House Construction on my plot.`;
+    const defaultMsg = `Hello Naveen Ji, I am visiting the Krishna Construction website. I would like to inquire regarding Turnkey House Construction on my plot in Gurugram / Delhi NCR.`;
     const message = customMessage || defaultMsg;
     return `https://wa.me/91${this.primaryPhone}?text=${encodeURIComponent(message)}`;
   }
@@ -289,7 +289,7 @@ export class ConstructionDataService {
     const res = this.calculationResult();
     const formattedCost = (res.totalCost / 10000000).toFixed(2);
     const msg = `Hello Naveen Ji (Krishna Construction),
-I calculated the construction estimate for my Gurugram plot:
+I calculated the construction estimate for my Gurugram / Delhi NCR plot:
 • Plot Size: ${res.plotAreaSqYards} Sq. Yards (${res.plotAreaSqFt} sq.ft)
 • Floors Planned: ${res.floors} Floors
 • Total Built-up: ~${res.totalBuiltUpSqFt.toLocaleString()} sq.ft
@@ -297,7 +297,7 @@ I calculated the construction estimate for my Gurugram plot:
 • Estimated Budget: ₹${formattedCost} Crore (Approx)
 • Timeline: ~${res.durationMonths} Months
 
-Please arrange an on-site plot survey or consultation at your Sector-67 office.`;
+Please arrange an on-site plot survey or consultation with your team in Delhi NCR.`;
     return `https://wa.me/91${this.primaryPhone}?text=${encodeURIComponent(msg)}`;
   }
 

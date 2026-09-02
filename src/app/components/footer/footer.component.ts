@@ -32,16 +32,16 @@ import { ConstructionDataService } from '../../services/construction-data.servic
             </div>
 
             <p class="text-xs font-mono text-[#38BDF8] uppercase tracking-wider font-semibold">
-              Master Turnkey Builder &middot; Stilt + 4 Floors &middot; Gurugram
+              Master Turnkey Builder &middot; Stilt + 4 Floors &middot; Gurugram & Delhi NCR
             </p>
 
             <p class="text-xs sm:text-sm text-[#F8FAFC]/70 font-light leading-relaxed max-w-md">
-              Gurugram&rsquo;s premier residential design-build contractor led by Naveen Sharma. Specializing in bespoke villas, Stilt+4 independent builder floors, and structural renovations with 100% transparent Cost-Plus material billing.
+              Gurugram and Delhi NCR&rsquo;s premier residential design-build contractor led by Naveen Sharma. Specializing in bespoke villas, Stilt+4 independent builder floors, and structural renovations with 100% transparent Cost-Plus material billing.
             </p>
 
             <div class="pt-2 text-xs font-mono text-[#F8FAFC]/60 space-y-1">
               <div><strong class="text-[#F8FAFC]">Master Builder:</strong> Naveen Sharma</div>
-              <div><strong class="text-[#F8FAFC]">Head Office:</strong> Office No. 420, 4th Floor, Soho Precision Tower, Sector-67, Gurugram</div>
+              <div><strong class="text-[#F8FAFC]">Corporate Office:</strong> Office No. 420, 4th Floor, Soho Precision Tower, Gurugram (Delhi NCR)</div>
               <div><strong class="text-[#F8FAFC]">Direct Phones:</strong> +91 {{ dataService.primaryPhone }} &middot; +91 {{ dataService.secondaryPhone }}</div>
             </div>
           </div>
@@ -51,7 +51,7 @@ import { ConstructionDataService } from '../../services/construction-data.servic
             <h4 class="font-mono text-xs uppercase tracking-widest text-[#D4AF37] font-semibold">
               Builder Services
             </h4>
-            <ul class="space-y-2 text-xs font-mono text-[#F7F4EE]/70">
+            <ul class="space-y-2 text-xs font-mono text-[#F8FAFC]/70">
               <li><a href="#services" class="hover:text-[#D4AF37] transition-colors">Turnkey Construction</a></li>
               <li><a href="#packages" class="hover:text-[#D4AF37] transition-colors">Construction Packages</a></li>
               <li><a href="#services" class="hover:text-[#D4AF37] transition-colors">Architectural & 3D BIM</a></li>
@@ -66,43 +66,42 @@ import { ConstructionDataService } from '../../services/construction-data.servic
             <h4 class="font-mono text-xs uppercase tracking-widest text-[#D4AF37] font-semibold">
               Engineering Norms
             </h4>
-            <ul class="space-y-2 text-xs font-mono text-[#F7F4EE]/70">
+            <ul class="space-y-2 text-xs font-mono text-[#F8FAFC]/70">
               <li><a href="#standards" class="hover:text-[#D4AF37] transition-colors">HSVP & DTCP Building Bye-Laws</a></li>
-              <li><a href="#standards" class="hover:text-[#D4AF37] transition-colors">BIS IS:456 & IS:1893 Seismic IV</a></li>
-              <li><a href="#standards" class="hover:text-[#D4AF37] transition-colors">NABL 28-Day Cube Strength Tests</a></li>
-              <li><a href="#standards" class="hover:text-[#D4AF37] transition-colors">Tata Tiscon Fe-550D Steel</a></li>
-              <li><a href="#standards" class="hover:text-[#D4AF37] transition-colors">UltraTech / ACC M-30 Concrete</a></li>
-              <li><a href="#standards" class="hover:text-[#D4AF37] transition-colors">10-Year Structural Guarantee</a></li>
+              <li><a href="#standards" class="hover:text-[#D4AF37] transition-colors">BIS IS:456 / IS:1893 Seismic Zone IV</a></li>
+              <li><a href="#standards" class="hover:text-[#D4AF37] transition-colors">NABL Tested Batch Reports</a></li>
+              <li><a href="#standards" class="hover:text-[#D4AF37] transition-colors">100% Genuine Tier-1 Material Seal</a></li>
+              <li><a href="#standards" class="hover:text-[#D4AF37] transition-colors">10-Year Structural Handover Warranty</a></li>
             </ul>
           </div>
 
-          <!-- Col 4: Active Gurugram Sectors (2 cols) -->
+          <!-- Col 4: Service Areas (2 cols) -->
           <div class="lg:col-span-2 space-y-3">
             <h4 class="font-mono text-xs uppercase tracking-widest text-[#D4AF37] font-semibold">
-              Active Sectors
+              Service Regions
             </h4>
-            <ul class="space-y-2 text-xs font-mono text-[#F7F4EE]/70">
-              <li>Sector-67 & Sector-63</li>
-              <li>Sector-57 Sushant Lok</li>
-              <li>Sector-50 Nirvana Country</li>
-              <li>Sector-49 Rosewood City</li>
-              <li>Sector-54 Golf Course Road</li>
-              <li>Sector-46 & South City</li>
+            <ul class="space-y-2 text-xs font-mono text-[#F8FAFC]/70">
+              <li>Gurugram (All Sectors)</li>
+              <li>Golf Course Extn & SPR</li>
+              <li>Sushant Lok & DLF</li>
+              <li>South Delhi & NCR</li>
+              <li>Faridabad & Noida</li>
+              <li>Across Delhi NCR</li>
             </ul>
           </div>
         </div>
 
         <!-- Builder Assurance Notice -->
-        <div class="pt-6 text-[0.68rem] font-mono text-[#F7F4EE]/45 leading-relaxed space-y-2">
+        <div class="pt-6 text-[0.68rem] font-mono text-[#F8FAFC]/50 leading-relaxed space-y-2">
           <p>
-            <strong>Engineering & Regulatory Assurance:</strong> Krishna Construction operates as an independent general contracting firm registered in Gurugram, Haryana. All residential construction adheres strictly to the Haryana Building Code (2017 & amendments), Bureau of Indian Standards (BIS) structural design parameters, and Municipal Corporation of Gurugram (MCG) statutory requirements. Every construction milestone is certified by licensed civil engineers with original material test reports handed over to homeowners.
+            <strong>Engineering & Regulatory Assurance:</strong> Krishna Construction operates as an independent design-build and general contracting firm based in Gurugram, serving the entire Delhi NCR region. All residential construction adheres strictly to the Haryana Building Code, Delhi Unified Building Bye-Laws, Bureau of Indian Standards (BIS) structural design parameters, and statutory municipal requirements.
           </p>
         </div>
 
         <!-- Bottom Copyright -->
-        <div class="pt-6 mt-4 border-t border-[#F7F4EE]/5 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[#F7F4EE]/50 gap-4">
+        <div class="pt-6 mt-4 border-t border-[#F8FAFC]/10 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[#F8FAFC]/55 gap-4">
           <div>
-            &copy; 2026 Krishna Construction. Naveen Sharma &middot; Sector-67 Gurugram. All rights reserved.
+            &copy; 2026 Krishna Construction. Naveen Sharma &middot; Gurugram & Delhi NCR. All rights reserved.
           </div>
           <div class="flex items-center gap-6">
             <a href="#" class="hover:text-[#D4AF37]">Privacy Policy</a>

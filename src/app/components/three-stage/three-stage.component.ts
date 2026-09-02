@@ -28,7 +28,7 @@ interface PhaseMilestone {
           <div class="flex items-center gap-3">
             <span class="w-8 h-[1px] bg-gradient-to-r from-[#1D4ED8] to-transparent"></span>
             <p class="font-mono text-[0.68rem] tracking-[0.24em] uppercase text-[#D4AF37] m-0 font-semibold">
-              Turnkey Home Builder &middot; Gurugram / Sector-67
+              Turnkey Home Builder &middot; Gurugram &amp; Delhi NCR
             </p>
           </div>
 
@@ -40,7 +40,7 @@ interface PhaseMilestone {
 
           <!-- Subhead -->
           <p class="text-base sm:text-lg text-[#F8FAFC]/80 font-normal leading-relaxed max-w-xl m-0">
-            Turnkey luxury villas and Stilt+4 floors built on your Gurugram plot. Transparent Cost-Plus billing, certified Tier-1 materials, and a 10-year structural warranty.
+            Turnkey luxury villas and Stilt+4 floors built on your plot in Gurugram &amp; Delhi NCR. Transparent Cost-Plus billing, certified Tier-1 materials, and a 10-year structural warranty.
           </p>
 
           <!-- CTAs & Reviews -->
@@ -89,7 +89,7 @@ interface PhaseMilestone {
             <p class="text-xs text-[#F8FAFC]/80 leading-snug font-sans m-0">
               <strong class="text-[#F8FAFC] font-medium">25+ years experience</strong> &middot; 
               <strong class="text-[#D4AF37] font-medium">Naveen Sharma</strong> on-site leadership &middot; 
-              Office 420, Soho Precision Tower, Sector-67 Gurugram.
+              Corporate Office: Soho Precision Tower &middot; Serving Gurugram &amp; Delhi NCR.
             </p>
           </div>
         </div>
@@ -164,11 +164,11 @@ interface PhaseMilestone {
           <span>&middot;</span>
           <span class="text-[#F8FAFC]/90">Naveen Sharma Desk</span>
           <span class="hidden md:inline">&middot;</span>
-          <span class="hidden md:inline text-[#38BDF8]">Office 420, Soho Precision Tower, Sector-67</span>
+          <span class="hidden md:inline text-[#38BDF8]">Corporate Office: Soho Precision Tower &middot; Delhi NCR</span>
         </div>
 
         <div class="flex items-center gap-4">
-          <span class="text-[#D4AF37]">Turnkey Residential Construction, Stilt+4 Floors & Architecture</span>
+          <span class="text-[#D4AF37]">Turnkey Residential Construction, Stilt+4 Floors &amp; Architecture &middot; Delhi NCR</span>
         </div>
       </div>
 

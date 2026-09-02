@@ -15,7 +15,7 @@ import { ConstructionDataService } from '../../services/construction-data.servic
           <div>
             <div class="inline-flex items-center gap-2 text-xs font-mono tracking-[0.2em] uppercase text-[#38BDF8] mb-2">
               <span class="w-6 h-[1px] bg-[#1D4ED8]"></span>
-              <span>Physical Corporate Desk</span>
+              <span>Corporate Desk &middot; Delhi NCR</span>
             </div>
 
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-light text-[#F8FAFC] leading-tight mb-3">
@@ -23,7 +23,7 @@ import { ConstructionDataService } from '../../services/construction-data.servic
             </h2>
 
             <p class="text-base text-[#F8FAFC]/75 font-light leading-relaxed">
-              We welcome prospective home builders and plot owners to our Gurugram corporate office for a cup of tea, structural blueprint review, and transparent Cost-Plus BOQ discussion.
+              We welcome prospective home builders and plot owners across Delhi NCR to our corporate office for a cup of tea, structural blueprint review, and transparent Cost-Plus BOQ discussion.
             </p>
           </div>
 
@@ -31,7 +31,7 @@ import { ConstructionDataService } from '../../services/construction-data.servic
           <div class="glass-card rounded-2xl p-7 border border-[#D4AF37]/35 relative overflow-hidden space-y-5 bg-[#0B1019] shadow-xl">
             <div class="flex items-center justify-between pb-3 border-b border-[#F8FAFC]/10">
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl p-[1px] bg-gradient-to-br from-[#D4AF37] via-[#38BDF8] to-[#1D4ED8] shadow-[0_0_15px_rgba(212,175,55,0.3)] flex-shrink-0">
+                <div class="w-12 h-12 rounded-xl p-[2px] bg-gradient-to-br from-[#FFDF73] via-[#D4AF37] to-[#38BDF8] shadow-[0_0_18px_rgba(212,175,55,0.4)] flex-shrink-0">
                   <img src="images/krishna_logo.jpg" alt="Krishna Logo" class="w-full h-full object-cover rounded-[9px] bg-[#070A0F]" />
                 </div>
                 <div>
@@ -44,7 +44,7 @@ import { ConstructionDataService } from '../../services/construction-data.servic
                 </div>
               </div>
               <span class="text-[0.65rem] font-mono text-[#38BDF8] uppercase tracking-wider font-semibold">
-                Gurugram Desk
+                Delhi NCR Desk
               </span>
             </div>
 
@@ -54,9 +54,9 @@ import { ConstructionDataService } from '../../services/construction-data.servic
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
-                <div class="text-[#F7F4EE]/85 font-light leading-snug">
-                  <strong class="font-medium text-[#F7F4EE] block">Office Location:</strong>
-                  Office No. 420, 4th Floor, Soho Precision Tower, Sector-67, Gurugram, Haryana.
+                <div class="text-[#F8FAFC]/85 font-light leading-snug">
+                  <strong class="font-medium text-[#F8FAFC] block">Office Location:</strong>
+                  Office No. 420, 4th Floor, Soho Precision Tower, Gurugram, Delhi NCR.
                 </div>
               </div>
 

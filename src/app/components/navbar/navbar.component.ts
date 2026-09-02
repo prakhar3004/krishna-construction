@@ -17,7 +17,7 @@ import { ConstructionDataService } from '../../services/construction-data.servic
         <div class="max-w-7xl mx-auto flex items-center justify-between">
           <div class="flex items-center gap-2">
             <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse"></span>
-            <span class="font-semibold tracking-wider uppercase text-[#38BDF8]">Gurugram 2026 Turnkey Offer:</span>
+            <span class="font-semibold tracking-wider uppercase text-[#38BDF8]">Delhi NCR 2026 Turnkey Offer:</span>
             <span class="text-[#F8FAFC]/90 hidden sm:inline">Save Up to 10% on Plot Construction with our Transparent Cost-Plus Model</span>
           </div>
           <div class="flex items-center gap-4">

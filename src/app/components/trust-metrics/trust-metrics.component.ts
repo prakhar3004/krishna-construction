@@ -94,9 +94,9 @@ import { ConstructionDataService } from '../../services/construction-data.servic
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
               </svg>
             </div>
-            <h4 class="font-display text-lg text-[#F7F4EE] font-normal">Sector-67 Prime Physical Desk</h4>
-            <p class="text-xs text-[#F7F4EE]/65 font-light leading-relaxed">
-              Meet our team at Office No. 420, Soho Precision Tower, Sector-67 Gurugram. Physical permanence, verified deed records, and complete transparency.
+            <h4 class="font-display text-lg text-[#F8FAFC] font-normal">Gurugram &amp; Delhi NCR Physical Desk</h4>
+            <p class="text-xs text-[#F8FAFC]/70 font-light leading-relaxed">
+              Meet our leadership at Soho Precision Tower, Gurugram. Serving plot owners across Gurugram, South Delhi, Faridabad, and greater Delhi NCR with verified deeds and complete transparency.
             </p>
           </div>
         </div>

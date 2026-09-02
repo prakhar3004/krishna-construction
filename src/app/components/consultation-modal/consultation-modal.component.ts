@@ -35,14 +35,14 @@ import { ConstructionDataService } from '../../services/construction-data.servic
               {{ dataService.activeModalTopic() }}
             </h3>
             <p class="text-xs font-mono text-[#38BDF8] mt-1">
-              Direct Desk: Naveen Sharma · Sector-67 Gurugram
+              Direct Desk: Naveen Sharma · Gurugram &amp; Delhi NCR
             </p>
           </div>
 
           <!-- Form -->
           <form (ngSubmit)="sendModalInquiry()" class="space-y-4">
             <div>
-              <label class="block text-[0.65rem] font-mono uppercase tracking-wider text-[#F7F4EE]/60 mb-1">
+              <label class="block text-[0.65rem] font-mono uppercase tracking-wider text-[#F8FAFC]/60 mb-1">
                 Your Name *
               </label>
               <input 
@@ -51,12 +51,12 @@ import { ConstructionDataService } from '../../services/construction-data.servic
                 [(ngModel)]="name" 
                 required
                 placeholder="e.g. Vikram Singhania"
-                class="w-full bg-[#080807] border border-[#F7F4EE]/15 focus:border-[#D4AF37] rounded-lg px-4 py-2.5 text-sm text-[#F7F4EE] outline-none"
+                class="w-full bg-[#070A0F] border border-[#D4AF37]/30 focus:border-[#38BDF8] rounded-lg px-4 py-2.5 text-sm text-[#F8FAFC] outline-none"
               />
             </div>
 
             <div>
-              <label class="block text-[0.65rem] font-mono uppercase tracking-wider text-[#F7F4EE]/60 mb-1">
+              <label class="block text-[0.65rem] font-mono uppercase tracking-wider text-[#F8FAFC]/60 mb-1">
                 Phone Number (WhatsApp) *
               </label>
               <input 
@@ -64,22 +64,22 @@ import { ConstructionDataService } from '../../services/construction-data.servic
                 name="mPhone"
                 [(ngModel)]="phone" 
                 required
-                placeholder="+91 98765 43210"
-                class="w-full bg-[#080807] border border-[#F7F4EE]/15 focus:border-[#D4AF37] rounded-lg px-4 py-2.5 text-sm text-[#F7F4EE] outline-none"
+                placeholder="e.g. 98100 XXXXX"
+                class="w-full bg-[#070A0F] border border-[#D4AF37]/30 focus:border-[#38BDF8] rounded-lg px-4 py-2.5 text-sm text-[#F8FAFC] outline-none"
               />
             </div>
 
             <div class="grid grid-cols-2 gap-3">
               <div>
-                <label class="block text-[0.65rem] font-mono uppercase tracking-wider text-[#F7F4EE]/60 mb-1">
-                  Location in Gurugram
+                <label class="block text-[0.65rem] font-mono uppercase tracking-wider text-[#F8FAFC]/60 mb-1">
+                  Location (Gurugram / Delhi NCR)
                 </label>
                 <input 
                   type="text" 
                   name="mLoc"
                   [(ngModel)]="location" 
-                  placeholder="e.g. Sector 57 / Sector 67"
-                  class="w-full bg-[#080807] border border-[#F7F4EE]/15 focus:border-[#D4AF37] rounded-lg px-3 py-2.5 text-sm text-[#F7F4EE] outline-none"
+                  placeholder="e.g. Gurugram / South Delhi / Noida"
+                  class="w-full bg-[#070A0F] border border-[#D4AF37]/30 focus:border-[#38BDF8] rounded-lg px-3 py-2.5 text-sm text-[#F8FAFC] outline-none"
                 />
               </div>
 
