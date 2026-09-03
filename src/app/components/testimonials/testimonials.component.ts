@@ -22,36 +22,33 @@ interface Testimonial {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <section id="testimonials" class="py-7 sm:py-9 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto relative z-10">
+    <section id="testimonials" class="py-12 sm:py-16 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto relative z-10">
       
       <!-- Section Header (Buildhood Style: What Our Clients Say) -->
-      <div class="mb-5 flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
+      <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <div class="inline-flex items-center gap-2 text-xs font-mono tracking-[0.2em] uppercase text-[#38BDF8] mb-2">
-            <span class="w-6 h-[1px] bg-[#1D4ED8]"></span>
-            <span>Verified Client Experiences</span>
-          </div>
-
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-light text-[#F8FAFC] leading-tight max-w-2xl mb-2">
-            What Homeowners Say About <span class="italic text-[#D4AF37]">Krishna Construction</span>.
+          <span class="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
+            Testimonials
+          </span>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-bold text-[#F8FAFC]">
+            What Our Clients Say
           </h2>
-
-          <p class="text-sm sm:text-base text-[#F8FAFC]/75 font-light max-w-2xl">
-            Hear directly from Gurugram plot owners, villa families, and property investors who trusted Naveen Sharma for turnkey execution.
+          <p class="mt-3 text-sm sm:text-base text-[#F8FAFC]/75 leading-relaxed max-w-2xl">
+            Hear directly from homeowners who trusted Krishna Construction to build their dream homes in Gurugram &amp; Delhi NCR.
           </p>
         </div>
 
         <!-- Google Rating Trust Pill -->
-        <div class="p-4 rounded-2xl bg-[#0B1019] border border-[#D4AF37]/30 flex items-center gap-4 flex-shrink-0 shadow-lg">
-          <div class="w-12 h-12 rounded-xl bg-[#D4AF37]/15 border border-[#D4AF37]/40 flex items-center justify-center text-xl font-bold text-[#D4AF37] font-mono">
+        <div class="p-3.5 rounded-2xl bg-[#0B1019] border border-[#D4AF37]/30 flex items-center gap-3 flex-shrink-0 shadow-lg">
+          <div class="w-11 h-11 rounded-xl bg-[#D4AF37]/15 border border-[#D4AF37]/40 flex items-center justify-center text-lg font-bold text-[#D4AF37] font-mono">
             4.9
           </div>
           <div>
-            <div class="flex items-center gap-1 text-[#D4AF37] text-sm">
+            <div class="flex items-center gap-1 text-[#D4AF37] text-xs">
               <span>★★★★★</span>
-              <span class="font-bold text-[#F7F4EE] ml-1">Google Reviews</span>
+              <span class="font-bold text-[#F8FAFC] ml-1">Google Reviews</span>
             </div>
-            <p class="text-xs text-[#F7F4EE]/60 font-mono m-0">120+ Verified Gurugram Homeowners</p>
+            <p class="text-[11px] text-[#F8FAFC]/60 font-mono m-0">120+ Verified Homeowners</p>
           </div>
         </div>
       </div>
@@ -59,7 +56,7 @@ interface Testimonial {
       <!-- Testimonial Cards Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         @for (item of testimonials; track item.id) {
-          <div class="glass-card rounded-2xl p-6 flex flex-col justify-between border border-[#F7F4EE]/15 hover:border-[#D4AF37]/50 transition-all duration-300 relative group overflow-hidden bg-[#0A0A08]">
+          <div class="rounded-2xl p-6 flex flex-col justify-between border border-[#D4AF37]/20 hover:border-[#D4AF37]/50 transition-all duration-300 relative group overflow-hidden bg-[#0B1019] shadow-lg">
             
             <!-- Top Tag & Sector -->
             <div>

@@ -8,20 +8,17 @@ import { ConstructionDataService } from '../../services/construction-data.servic
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <section id="calculator" class="py-7 sm:py-9 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto relative z-10">
-      <!-- Section Title -->
-      <div class="mb-5">
-        <div class="inline-flex items-center gap-2 text-xs font-mono tracking-[0.2em] uppercase text-[#38BDF8] mb-2">
-          <span class="w-6 h-[1px] bg-[#1D4ED8]"></span>
-          <span>Transparent Pricing Engine</span>
-        </div>
-
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-light text-[#F8FAFC] leading-tight max-w-3xl mb-2">
-          Interactive <span class="italic text-[#D4AF37]">Plot Construction Cost</span> Estimator.
+    <section id="calculator" class="py-12 sm:py-16 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto relative z-10">
+      <!-- Section Title (Buildhood Style) -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
+          Cost Estimator
+        </span>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold text-[#F8FAFC]">
+          Interactive Plot Construction Cost Estimator
         </h2>
-
-        <p class="text-sm sm:text-base text-[#F8FAFC]/75 font-light max-w-2xl">
-          Calibrated to 2026 Gurugram benchmark rates (Golf Course Extn, Sector 67, SPR & New Gurgaon). Calculate turnkey construction budgets with guaranteed zero cost escalations.
+        <p class="mt-3 text-sm sm:text-base text-[#F8FAFC]/75 leading-relaxed">
+          Quickly calculate your turnkey construction budget based on plot size, floors, and specifications. Calibrated to 2026 Gurugram benchmark rates.
         </p>
       </div>
 

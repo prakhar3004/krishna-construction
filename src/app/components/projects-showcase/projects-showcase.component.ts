@@ -20,38 +20,31 @@ interface EnhancedProject {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <section id="portfolio" class="py-7 sm:py-9 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto relative z-10">
-      <!-- Header -->
-      <div class="mb-5 flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
+    <section id="portfolio" class="py-12 sm:py-16 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto relative z-10">
+      <!-- Header (Buildhood Style) -->
+      <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <div class="inline-flex items-center gap-2 text-xs font-mono tracking-[0.2em] uppercase text-[#38BDF8] mb-2">
-            <span class="w-6 h-[1px] bg-[#1D4ED8]"></span>
-            <span>Active & Delivered Gurugram Sites</span>
-          </div>
-
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-light text-[#F8FAFC] leading-tight max-w-2xl">
-            Selected Landmarks Built Across <span class="italic text-[#D4AF37]">Gurugram</span>.
+          <span class="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
+            Our Projects
+          </span>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-bold text-[#F8FAFC]">
+            In-Progress &amp; Completed Projects in Gurugram
           </h2>
-
-          <p class="text-sm sm:text-base text-[#F8FAFC]/75 font-light max-w-2xl mt-1.5">
-            Real ongoing and handed-over residences in DLF Phase 1-4, Sushant Lok, Golf Course Extn, and Nirvana Country.
+          <p class="mt-3 text-sm sm:text-base text-[#F8FAFC]/75 leading-relaxed max-w-2xl">
+            Explore homes currently under construction and recently delivered &mdash; live design execution, site supervision, and steady milestone progress.
           </p>
         </div>
 
-        <!-- Filter Pills (In-Progress vs Completed Model) -->
-        <div class="flex flex-wrap gap-2">
+        <!-- Filter Pills (All / In-Progress / Completed) -->
+        <div class="flex flex-wrap gap-2 flex-shrink-0">
           @for (tab of filterTabs; track tab.key) {
             <button 
               (click)="activeTab.set(tab.key)"
-              class="px-4 py-2 rounded-full font-mono text-xs tracking-wider uppercase transition-all duration-300 cursor-pointer"
-              [class.bg-gradient-to-r]="activeTab() === tab.key"
-              [class.from-[#D4AF37]]="activeTab() === tab.key"
-              [class.to-[#C4971A]]="activeTab() === tab.key"
+              class="px-4 py-2 rounded-xl text-xs font-semibold tracking-wider uppercase transition-all duration-300 cursor-pointer"
+              [class.bg-[#D4AF37]]="activeTab() === tab.key"
               [class.text-[#070A0F]]="activeTab() === tab.key"
-              [class.font-bold]="activeTab() === tab.key"
-              [class.shadow-[0_0_15px_rgba(212,175,55,0.3)]]="activeTab() === tab.key"
               [class.border]="activeTab() !== tab.key"
-              [class.border-[#D4AF37]/25]="activeTab() !== tab.key"
+              [class.border-[#F8FAFC]/20]="activeTab() !== tab.key"
               [class.bg-[#0B1019]]="activeTab() !== tab.key"
               [class.text-[#F8FAFC]/70]="activeTab() !== tab.key"
             >

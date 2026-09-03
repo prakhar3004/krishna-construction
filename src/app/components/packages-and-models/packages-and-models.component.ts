@@ -5,26 +5,12 @@ import { ConstructionDataService } from '../../services/construction-data.servic
 interface ConstructionPackage {
   id: string;
   name: string;
-  badge?: string;
   tier: string;
   ratePerSqFt: number;
   tagline: string;
   popular?: boolean;
-  structure: string;
-  flooring: string;
-  bathrooms: string;
-  doorsWindows: string;
-  paint: string;
-  electrical: string;
+  bestFor: string;
   highlights: string[];
-}
-
-interface SpecRow {
-  category: string;
-  silver: string;
-  gold: string;
-  diamond: string;
-  platinum: string;
 }
 
 @Component({
@@ -32,21 +18,21 @@ interface SpecRow {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <section id="packages" class="py-7 sm:py-9 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto relative z-10">
+    <section id="packages" class="py-10 sm:py-14 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto relative z-10">
       
-      <!-- 1. TRUSTED MATERIAL BRANDS CAROUSEL/GRID (Buildhood Reference) -->
-      <div class="mb-8 pb-6 border-b border-[#F8FAFC]/10">
-        <p class="text-center text-xs font-mono tracking-[0.24em] uppercase text-[#D4AF37] mb-4 font-semibold">
-          100% Guaranteed Genuine Materials &middot; We Build Exclusively With Tier-1 Brands
+      <!-- 1. TRUSTED BRANDS STRIP (Buildhood Pattern) -->
+      <div class="mb-14 pb-8 border-b border-[#F8FAFC]/10 text-center">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[#D4AF37] mb-6">
+          We use only trusted brands
         </p>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-10 gap-3 text-center">
+        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:gap-x-12">
           @for (brand of materialBrands; track brand.name) {
-            <div class="p-3 rounded-xl bg-[#0B1019] border border-[#D4AF37]/20 hover:border-[#38BDF8]/60 transition-all group flex flex-col items-center justify-center shadow">
-              <span class="text-xs font-mono font-bold text-[#F8FAFC] group-hover:text-[#D4AF37] transition-colors block">
+            <div class="px-4 py-2 rounded-xl bg-[#0B1019] border border-[#D4AF37]/15 hover:border-[#38BDF8]/60 transition-all flex flex-col items-center justify-center">
+              <span class="text-sm font-semibold text-[#F8FAFC] tracking-wide">
                 {{ brand.name }}
               </span>
-              <span class="text-[0.6rem] font-mono text-[#F8FAFC]/50 uppercase tracking-wider block mt-0.5">
+              <span class="text-[0.62rem] font-mono text-[#F8FAFC]/50 uppercase tracking-wider mt-0.5">
                 {{ brand.category }}
               </span>
             </div>
@@ -54,142 +40,307 @@ interface SpecRow {
         </div>
       </div>
 
-      <!-- 2. SECTION HEADER: PACKAGES -->
-      <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
-          <div class="inline-flex items-center gap-2 text-xs font-mono tracking-[0.2em] uppercase text-[#38BDF8] mb-2">
-            <span class="w-6 h-[1px] bg-[#1D4ED8]"></span>
-            <span>Turnkey Construction Packages</span>
-          </div>
-
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-light text-[#F8FAFC] leading-tight max-w-2xl mb-2">
-            Standardized Pricing. <span class="italic text-[#D4AF37]">Bespoke Craftsmanship</span>.
+      <!-- 2. OUR EXPERTISE: 3 COMPREHENSIVE SERVICES (Buildhood Pattern) -->
+      <div id="services" class="mb-16 pb-12 border-b border-[#F8FAFC]/10">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span class="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
+            Our Expertise
+          </span>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-bold text-[#F8FAFC]">
+            Comprehensive Home Construction Services in Gurugram
           </h2>
-
-          <p class="text-sm sm:text-base text-[#F8FAFC]/75 font-light max-w-2xl">
-            Clear turnkey rates for Gurugram plots. Includes soil testing, DTCP municipal sanctions, Vastu planning, and a 10-year warranty.
+          <p class="mt-3 text-sm sm:text-base text-[#F8FAFC]/75 leading-relaxed">
+            At Krishna Construction, we offer a complete range of residential services tailored to your plot &mdash; from initial design to final Griha Pravesh handover.
           </p>
         </div>
 
-        <!-- Navigation Tabs: Packages vs Contract Models vs Spec Comparison -->
-        <div class="flex flex-wrap items-center gap-2 bg-[#0B1019] p-1.5 rounded-2xl sm:rounded-full border border-[#D4AF37]/30 shadow-lg">
-          <button 
-            (click)="selectedTab.set('packages')"
-            class="px-4 py-1.5 rounded-full font-mono text-xs uppercase tracking-wider transition-all cursor-pointer"
-            [class.bg-gradient-to-r]="selectedTab() === 'packages'"
-            [class.from-[#D4AF37]]="selectedTab() === 'packages'"
-            [class.to-[#C4971A]]="selectedTab() === 'packages'"
-            [class.text-[#070A0F]]="selectedTab() === 'packages'"
-            [class.font-bold]="selectedTab() === 'packages'"
-            [class.shadow-[0_0_15px_rgba(212,175,55,0.3)]]="selectedTab() === 'packages'"
-            [class.text-[#F8FAFC]/70]="selectedTab() !== 'packages'"
-          >
-            4 Packages
-          </button>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Service 01 -->
+          <div class="group relative rounded-2xl border border-[#D4AF37]/20 bg-[#0B1019] p-7 transition duration-300 hover:-translate-y-1 hover:border-[#D4AF37]/50 shadow-xl flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-4 mb-6">
+                <div class="w-12 h-12 rounded-xl bg-[#D4AF37]/15 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-[#070A0F] transition-colors">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                  </svg>
+                </div>
+                <span class="rounded-full border border-[#D4AF37]/30 bg-[#070A0F] px-3 py-1 text-xs font-bold text-[#D4AF37]">01</span>
+              </div>
+              <h3 class="text-xl font-bold text-[#F8FAFC]">Home Construction</h3>
+              <p class="mt-3 text-sm leading-relaxed text-[#F8FAFC]/70">
+                Independent house, luxury villa, and Stilt+4 floors construction in Gurugram with high engineering standards, certified materials, and great value for money.
+              </p>
+            </div>
+            <div class="mt-7 pt-4 border-t border-[#F8FAFC]/10 flex items-center justify-between">
+              <span class="text-xs uppercase tracking-wider text-[#D4AF37] font-semibold">Turnkey Execution</span>
+              <button 
+                (click)="dataService.openConsultationModal('Turnkey Construction')"
+                class="w-9 h-9 rounded-full bg-[#070A0F] border border-[#D4AF37]/30 text-[#D4AF37] flex items-center justify-center group-hover:bg-[#D4AF37] group-hover:text-[#070A0F] transition-all cursor-pointer"
+                title="Consult for Home Construction"
+              >
+                &rarr;
+              </button>
+            </div>
+          </div>
 
-          <button 
-            (click)="selectedTab.set('models')"
-            class="px-4 py-1.5 rounded-full font-mono text-xs uppercase tracking-wider transition-all cursor-pointer"
-            [class.bg-gradient-to-r]="selectedTab() === 'models'"
-            [class.from-[#D4AF37]]="selectedTab() === 'models'"
-            [class.to-[#C4971A]]="selectedTab() === 'models'"
-            [class.text-[#070A0F]]="selectedTab() === 'models'"
-            [class.font-bold]="selectedTab() === 'models'"
-            [class.shadow-[0_0_15px_rgba(212,175,55,0.3)]]="selectedTab() === 'models'"
-            [class.text-[#F8FAFC]/70]="selectedTab() !== 'models'"
-          >
-            Cost-Plus vs Lump-Sum
-          </button>
+          <!-- Service 02 -->
+          <div class="group relative rounded-2xl border border-[#D4AF37]/20 bg-[#0B1019] p-7 transition duration-300 hover:-translate-y-1 hover:border-[#D4AF37]/50 shadow-xl flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-4 mb-6">
+                <div class="w-12 h-12 rounded-xl bg-[#38BDF8]/15 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8] group-hover:bg-[#38BDF8] group-hover:text-[#070A0F] transition-colors">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                  </svg>
+                </div>
+                <span class="rounded-full border border-[#38BDF8]/30 bg-[#070A0F] px-3 py-1 text-xs font-bold text-[#38BDF8]">02</span>
+              </div>
+              <h3 class="text-xl font-bold text-[#F8FAFC]">Architecture &amp; Structural Design</h3>
+              <p class="mt-3 text-sm leading-relaxed text-[#F8FAFC]/70">
+                2D/3D floor plans, photorealistic 3D elevations, and Vastu-compliant structural drawings engineered to Seismic Zone IV and DTCP Haryana building bye-laws.
+              </p>
+            </div>
+            <div class="mt-7 pt-4 border-t border-[#F8FAFC]/10 flex items-center justify-between">
+              <span class="text-xs uppercase tracking-wider text-[#38BDF8] font-semibold">Architectural Design</span>
+              <button 
+                (click)="dataService.openConsultationModal('Architectural Design')"
+                class="w-9 h-9 rounded-full bg-[#070A0F] border border-[#38BDF8]/30 text-[#38BDF8] flex items-center justify-center group-hover:bg-[#38BDF8] group-hover:text-[#070A0F] transition-all cursor-pointer"
+                title="Consult for Architectural Design"
+              >
+                &rarr;
+              </button>
+            </div>
+          </div>
 
-          <button 
-            (click)="selectedTab.set('compare')"
-            class="px-4 py-1.5 rounded-full font-mono text-xs uppercase tracking-wider transition-all cursor-pointer"
-            [class.bg-gradient-to-r]="selectedTab() === 'compare'"
-            [class.from-[#D4AF37]]="selectedTab() === 'compare'"
-            [class.to-[#C4971A]]="selectedTab() === 'compare'"
-            [class.text-[#070A0F]]="selectedTab() === 'compare'"
-            [class.font-bold]="selectedTab() === 'compare'"
-            [class.shadow-[0_0_15px_rgba(212,175,55,0.3)]]="selectedTab() === 'compare'"
-            [class.text-[#F8FAFC]/70]="selectedTab() !== 'compare'"
-          >
-            Compare Specs
-          </button>
+          <!-- Service 03 -->
+          <div class="group relative rounded-2xl border border-[#D4AF37]/20 bg-[#0B1019] p-7 transition duration-300 hover:-translate-y-1 hover:border-[#D4AF37]/50 shadow-xl flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-4 mb-6">
+                <div class="w-12 h-12 rounded-xl bg-[#6B7A5C]/20 border border-[#6B7A5C]/40 flex items-center justify-center text-[#6B7A5C] group-hover:bg-[#6B7A5C] group-hover:text-white transition-colors">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                  </svg>
+                </div>
+                <span class="rounded-full border border-[#6B7A5C]/40 bg-[#070A0F] px-3 py-1 text-xs font-bold text-[#6B7A5C]">03</span>
+              </div>
+              <h3 class="text-xl font-bold text-[#F8FAFC]">Planning, Sanctions &amp; Renovation</h3>
+              <p class="mt-3 text-sm leading-relaxed text-[#F8FAFC]/70">
+                End-to-end project management from DTCP/MCG municipal sanctions to turnkey site supervision, as well as complete structural revamps of existing residential properties.
+              </p>
+            </div>
+            <div class="mt-7 pt-4 border-t border-[#F8FAFC]/10 flex items-center justify-between">
+              <span class="text-xs uppercase tracking-wider text-[#6B7A5C] font-semibold">Project Management</span>
+              <button 
+                (click)="dataService.openConsultationModal('Project Management & Sanctions')"
+                class="w-9 h-9 rounded-full bg-[#070A0F] border border-[#6B7A5C]/40 text-[#6B7A5C] flex items-center justify-center group-hover:bg-[#6B7A5C] group-hover:text-white transition-all cursor-pointer"
+                title="Consult for Project Management"
+              >
+                &rarr;
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- VIEW A: 4 PACKAGES CARDS -->
-      @if (selectedTab() === 'packages') {
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- 3. OUR CONTRACT MODELS: COST-PLUS VS LUMP-SUM (Buildhood Pattern) -->
+      <div id="models" class="mb-16 pb-12 border-b border-[#F8FAFC]/10">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span class="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
+            Our Contract Models
+          </span>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-bold text-[#F8FAFC]">
+            Transparent Construction Contracts Built Around Your Needs
+          </h2>
+          <p class="mt-3 text-sm sm:text-base text-[#F8FAFC]/75 leading-relaxed">
+            At Krishna Construction, we offer two construction contract models to suit your preferences &mdash; the Cost-Plus model for maximum transparency or the Lump-Sum model for a fixed-price guarantee.
+          </p>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-2">
+          <!-- Cost-Plus Contract Card (Recommended) -->
+          <div class="group relative rounded-2xl border-2 border-[#D4AF37] bg-[#0B1019] p-8 transition duration-300 hover:-translate-y-1 shadow-2xl relative overflow-hidden">
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <h3 class="text-2xl font-bold text-[#F8FAFC]">Cost-Plus Contract</h3>
+              <span class="rounded-full px-3.5 py-1 text-xs font-bold uppercase tracking-wide bg-[#D4AF37] text-[#070A0F]">
+                Recommended
+              </span>
+            </div>
+
+            <p class="text-sm leading-relaxed text-[#F8FAFC]/75 mb-6">
+              The Cost-Plus Contract provides full transparency, flexibility, and potential cost savings by allowing you to pay the actual wholesale cost of materials and labour plus an agreed fixed management fee.
+            </p>
+
+            <ul class="space-y-3 text-sm text-[#F8FAFC]/85 mb-8">
+              <li class="flex items-start gap-3 rounded-xl bg-[#070A0F] px-3.5 py-2.5">
+                <svg class="h-5 w-5 text-[#D4AF37] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Complete cost transparency &mdash; every rupee accounted for</span>
+              </li>
+              <li class="flex items-start gap-3 rounded-xl bg-[#070A0F] px-3.5 py-2.5">
+                <svg class="h-5 w-5 text-[#D4AF37] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Pay for actual materials with weekly GST bills &amp; weighbridge slips</span>
+              </li>
+              <li class="flex items-start gap-3 rounded-xl bg-[#070A0F] px-3.5 py-2.5">
+                <svg class="h-5 w-5 text-[#D4AF37] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Save up to 10% compared to traditional contractor markups</span>
+              </li>
+              <li class="flex items-start gap-3 rounded-xl bg-[#070A0F] px-3.5 py-2.5">
+                <svg class="h-5 w-5 text-[#D4AF37] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Flexible scope &amp; material upgrades anytime during construction</span>
+              </li>
+              <li class="flex items-start gap-3 rounded-xl bg-[#070A0F] px-3.5 py-2.5">
+                <svg class="h-5 w-5 text-[#D4AF37] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Weekly cost reports and digital photographic progress updates</span>
+              </li>
+            </ul>
+
+            <button 
+              (click)="dataService.openConsultationModal('Cost-Plus Contract Model')"
+              class="w-full py-3 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#C4971A] text-[#070A0F] text-sm font-bold uppercase tracking-wider shadow-lg shadow-[#D4AF37]/25 hover:from-[#DFBA44] hover:to-[#D4AF37] transition-all cursor-pointer"
+            >
+              Opt for Cost-Plus Model &rarr;
+            </button>
+          </div>
+
+          <!-- Lump-Sum Contract Card (Fixed Price) -->
+          <div class="group relative rounded-2xl border border-[#F8FAFC]/20 bg-[#0B1019] p-8 transition duration-300 hover:-translate-y-1 hover:border-[#F8FAFC]/40 shadow-xl relative overflow-hidden">
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <h3 class="text-2xl font-bold text-[#F8FAFC]">Lump-Sum Contract</h3>
+              <span class="rounded-full px-3.5 py-1 text-xs font-bold uppercase tracking-wide bg-[#070A0F] text-[#F8FAFC]/70 border border-[#F8FAFC]/20">
+                Fixed Price
+              </span>
+            </div>
+
+            <p class="text-sm leading-relaxed text-[#F8FAFC]/75 mb-6">
+              A set price for the entire construction project based on agreed specifications, materials and detailed BOQ. Ideal for clients who prefer a fixed, predictable budget.
+            </p>
+
+            <ul class="space-y-3 text-sm text-[#F8FAFC]/85 mb-8">
+              <li class="flex items-start gap-3 rounded-xl bg-[#070A0F] px-3.5 py-2.5">
+                <svg class="h-5 w-5 text-[#38BDF8] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Fixed, predictable project price locked before excavation</span>
+              </li>
+              <li class="flex items-start gap-3 rounded-xl bg-[#070A0F] px-3.5 py-2.5">
+                <svg class="h-5 w-5 text-[#38BDF8] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Defined scope and specifications upfront with detailed 80-page BOQ</span>
+              </li>
+              <li class="flex items-start gap-3 rounded-xl bg-[#070A0F] px-3.5 py-2.5">
+                <svg class="h-5 w-5 text-[#38BDF8] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Zero budget escalation guaranteed &mdash; contractor absorbs price hikes</span>
+              </li>
+              <li class="flex items-start gap-3 rounded-xl bg-[#070A0F] px-3.5 py-2.5">
+                <svg class="h-5 w-5 text-[#38BDF8] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Milestone-linked payment schedule ideal for bank construction loans</span>
+              </li>
+              <li class="flex items-start gap-3 rounded-xl bg-[#070A0F] px-3.5 py-2.5">
+                <svg class="h-5 w-5 text-[#38BDF8] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Simple budgeting &amp; planning for standard home builds</span>
+              </li>
+            </ul>
+
+            <button 
+              (click)="dataService.openConsultationModal('Lump-Sum Fixed Price Contract')"
+              class="w-full py-3 rounded-xl border border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#070A0F] text-sm font-bold uppercase tracking-wider transition-all cursor-pointer"
+            >
+              Opt for Lump-Sum Contract &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. OUR PACKAGES: 4 CLEAN CARDS + COST-PLUS ADVANTAGE BANNER (Buildhood Pattern) -->
+      <div class="mb-16 pb-12 border-b border-[#F8FAFC]/10">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span class="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
+            Our Packages
+          </span>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-bold text-[#F8FAFC]">
+            House Construction Packages in Gurugram
+          </h2>
+          <p class="mt-3 text-sm sm:text-base text-[#F8FAFC]/75 leading-relaxed">
+            Choose from our range of construction packages designed for every budget. All packages include GST, architectural design, and site supervision.
+          </p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           @for (pkg of packages; track pkg.id) {
             <div 
-              class="glass-card rounded-2xl p-6 flex flex-col justify-between border transition-all duration-300 relative group overflow-hidden bg-[#0B1019]"
+              class="rounded-2xl border p-6 flex flex-col justify-between transition-all duration-300 relative group bg-[#0B1019]"
               [class.border-[#D4AF37]]="pkg.popular"
               [class.shadow-2xl]="pkg.popular"
-              [class.shadow-[#38BDF8]/20]="pkg.popular"
-              [class.border-[#D4AF37]/25]="!pkg.popular"
+              [class.shadow-[#D4AF37]/20]="pkg.popular"
+              [class.border-[#F8FAFC]/15]="!pkg.popular"
             >
               @if (pkg.popular) {
-                <div class="absolute top-0 right-0 bg-gradient-to-r from-[#D4AF37] to-[#C4971A] text-[#070A0F] font-mono font-bold text-[0.62rem] uppercase tracking-widest px-3 py-1 rounded-bl-xl shadow">
+                <div class="absolute top-0 right-0 bg-[#D4AF37] text-[#070A0F] text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-bl-xl shadow">
                   Most Popular
                 </div>
               }
 
               <div>
-                <span class="text-[0.65rem] font-mono tracking-widest uppercase text-[#38BDF8] font-semibold block">
+                <span class="text-xs font-mono uppercase tracking-wider text-[#D4AF37] font-semibold block">
                   {{ pkg.tier }}
                 </span>
-                <h3 class="font-display text-2xl text-[#F8FAFC] font-medium mt-1">
+                <h3 class="text-2xl font-bold text-[#F8FAFC] mt-1">
                   {{ pkg.name }}
                 </h3>
-                <p class="text-xs text-[#F8FAFC]/60 font-light mt-1">
+                <p class="text-xs text-[#F8FAFC]/60 mt-1">
+                  Best for {{ pkg.bestFor }}
+                </p>
+
+                <!-- Rate Box -->
+                <div class="mt-5 p-4 rounded-xl bg-[#070A0F] border border-[#D4AF37]/20">
+                  <p class="text-[11px] uppercase tracking-wider text-[#F8FAFC]/50">Starting from</p>
+                  <p class="mt-1 font-mono font-extrabold text-[#D4AF37] text-3xl leading-none">
+                    ₹{{ pkg.ratePerSqFt | number }}<span class="text-sm font-normal text-[#F8FAFC]/70">/sq.ft*</span>
+                  </p>
+                </div>
+
+                <p class="mt-4 text-xs leading-relaxed text-[#F8FAFC]/75">
                   {{ pkg.tagline }}
                 </p>
 
-                <!-- Rate Tag -->
-                <div class="mt-4 p-3 rounded-xl bg-[#070A0F] border border-[#D4AF37]/20 flex items-baseline gap-1.5">
-                  <span class="text-xs font-mono text-[#D4AF37]">Starting from</span>
-                  <span class="text-2xl font-mono font-bold text-[#F8FAFC]">₹{{ pkg.ratePerSqFt | number }}</span>
-                  <span class="text-[0.68rem] font-mono text-[#F8FAFC]/60">/sq.ft*</span>
-                </div>
-
-                <!-- Specs List -->
-                <div class="mt-5 space-y-2.5 text-xs font-mono text-[#F8FAFC]/80">
-                  <div class="flex items-start gap-2">
-                    <span class="text-[#D4AF37] mt-0.5">&bull;</span>
-                    <div><strong class="text-[#F8FAFC]">Structure:</strong> {{ pkg.structure }}</div>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <span class="text-[#D4AF37] mt-0.5">&bull;</span>
-                    <div><strong class="text-[#F8FAFC]">Flooring:</strong> {{ pkg.flooring }}</div>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <span class="text-[#D4AF37] mt-0.5">&bull;</span>
-                    <div><strong class="text-[#F8FAFC]">Sanitary:</strong> {{ pkg.bathrooms }}</div>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <span class="text-[#D4AF37] mt-0.5">&bull;</span>
-                    <div><strong class="text-[#F8FAFC]">Windows:</strong> {{ pkg.doorsWindows }}</div>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <span class="text-[#D4AF37] mt-0.5">&bull;</span>
-                    <div><strong class="text-[#F8FAFC]">Paints:</strong> {{ pkg.paint }}</div>
-                  </div>
-                </div>
+                <!-- Clean Bullets -->
+                <ul class="mt-4 space-y-2.5 text-xs text-[#F8FAFC]/80">
+                  @for (item of pkg.highlights; track item) {
+                    <li class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-[#D4AF37] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="m9 12 2 2 4-4"></path>
+                      </svg>
+                      <span>{{ item }}</span>
+                    </li>
+                  }
+                </ul>
               </div>
 
               <!-- Button CTA -->
               <div class="mt-6 pt-4 border-t border-[#F8FAFC]/10">
                 <button 
                   (click)="inquirePackage(pkg.name, pkg.ratePerSqFt)"
-                  class="w-full py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider font-semibold transition-all cursor-pointer flex items-center justify-center gap-2"
+                  class="w-full py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2"
                   [class.bg-gradient-to-r]="pkg.popular"
-                  [class.from-[#1D4ED8]]="pkg.popular"
-                  [class.to-[#2563EB]]="pkg.popular"
-                  [class.hover:from-[#1E40AF]]="pkg.popular"
-                  [class.hover:to-[#1D4ED8]]="pkg.popular"
-                  [class.text-white]="pkg.popular"
-                  [class.shadow-lg]="pkg.popular"
-                  [class.shadow-[#1D4ED8]/30]="pkg.popular"
+                  [class.from-[#D4AF37]]="pkg.popular"
+                  [class.to-[#C4971A]]="pkg.popular"
+                  [class.text-[#070A0F]]="pkg.popular"
                   [class.border]="!pkg.popular"
                   [class.border-[#D4AF37]/40]="!pkg.popular"
                   [class.text-[#D4AF37]]="!pkg.popular"
@@ -197,244 +348,158 @@ interface SpecRow {
                   [class.hover:text-[#070A0F]]="!pkg.popular"
                 >
                   <span>Select {{ pkg.name }}</span>
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
+                  &rarr;
                 </button>
               </div>
             </div>
           }
         </div>
-      }
 
-      <!-- VIEW B: DETAILED SPECIFICATIONS COMPARISON TABLE (Buildhood Compare Matrix) -->
-      @if (selectedTab() === 'compare') {
-        <div class="glass-card rounded-2xl p-6 sm:p-8 border border-[#D4AF37]/35 overflow-x-auto bg-[#0A0A08]">
-          <div class="min-w-[760px]">
-            <div class="mb-4 pb-4 border-b border-[#F7F4EE]/10 flex items-center justify-between">
-              <div>
-                <h3 class="font-display text-2xl text-[#F7F4EE]">Side-by-Side Specification Benchmark</h3>
-                <p class="text-xs font-mono text-[#F7F4EE]/60 mt-1">Calibrated to 2026 Haryana HSVP & DTCP Residential Norms</p>
-              </div>
-              <span class="text-xs font-mono text-[#D4AF37] px-3 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30">
-                Guaranteed M-30 Batching & Fe-550D
-              </span>
+        <!-- Cost-Plus Advantage Banner (Buildhood Exact Feature) -->
+        <div class="mt-8 rounded-2xl border border-[#D4AF37]/30 bg-gradient-to-r from-[#0B1019] via-[#121824] to-[#0B1019] p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-[#D4AF37] text-[#070A0F] font-bold text-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+              ₹
             </div>
-
-            <table class="w-full text-left font-mono text-xs border-collapse">
-              <thead>
-                <tr class="border-b border-[#F7F4EE]/15 text-[#D4AF37] uppercase tracking-wider">
-                  <th class="py-3 px-4 w-1/5">Specification Area</th>
-                  <th class="py-3 px-3 w-1/5">Silver (₹1,850/sft)</th>
-                  <th class="py-3 px-3 w-1/5">Gold (₹2,150/sft)</th>
-                  <th class="py-3 px-3 w-1/5 bg-[#D4AF37]/10 text-white font-bold rounded-t-lg">Diamond (₹2,750/sft)</th>
-                  <th class="py-3 px-3 w-1/5">Platinum (₹3,600+/sft)</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-[#F7F4EE]/5 text-[#F7F4EE]/80">
-                @for (row of specMatrix; track row.category) {
-                  <tr class="hover:bg-[#161410] transition-colors">
-                    <td class="py-3.5 px-4 font-semibold text-[#F7F4EE]">{{ row.category }}</td>
-                    <td class="py-3.5 px-3 text-[#F7F4EE]/70">{{ row.silver }}</td>
-                    <td class="py-3.5 px-3 text-[#F7F4EE]/80">{{ row.gold }}</td>
-                    <td class="py-3.5 px-3 bg-[#D4AF37]/5 text-white font-medium">{{ row.diamond }}</td>
-                    <td class="py-3.5 px-3 text-[#D4AF37]">{{ row.platinum }}</td>
-                  </tr>
-                }
-              </tbody>
-            </table>
-          </div>
-        </div>
-      }
-
-      <!-- VIEW C: CONTRACT MODELS (Buildhood Cost-Plus vs Lump-Sum Model) -->
-      @if (selectedTab() === 'models') {
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          
-          <!-- Cost-Plus Contract Card (Recommended) -->
-          <div class="glass-card rounded-2xl p-7 border-2 border-[#D4AF37] relative overflow-hidden bg-gradient-to-b from-[#14120D] to-[#0A0A08]">
-            <div class="flex items-center justify-between mb-4">
-              <div>
-                <span class="text-xs font-mono uppercase tracking-widest text-[#D4AF37] font-semibold">Model 01 &middot; Recommended</span>
-                <h3 class="text-2xl font-display text-[#F7F4EE] mt-1">Cost-Plus Management Contract</h3>
-              </div>
-              <span class="px-3 py-1 rounded-full bg-[#D4AF37] text-[#080807] font-mono font-bold text-xs uppercase">
-                Save Up to 10%
-              </span>
+            <div>
+              <span class="text-xs font-bold uppercase tracking-widest text-[#D4AF37]">Cost-Plus Advantage</span>
+              <h3 class="text-xl sm:text-2xl font-bold text-[#F8FAFC] mt-1">
+                Save up to 10% on all packages with the Cost-Plus contract model
+              </h3>
+              <p class="text-xs sm:text-sm text-[#F8FAFC]/75 mt-1.5 max-w-2xl leading-relaxed">
+                Choose any construction package above, then switch to Cost-Plus for transparent actual-cost billing, flexible upgrades, weekly cost visibility, and complete control over your home budget.
+              </p>
             </div>
-
-            <p class="text-sm text-[#F7F4EE]/80 font-light leading-relaxed mb-6">
-              Pay actual wholesale material costs with weekly GST invoices and weighbridge slips, plus a transparent fixed management fee. Save up to 10% on steel, cement, and marble.
-            </p>
-
-            <div class="space-y-3 font-mono text-xs text-[#F7F4EE]/85 mb-8">
-              <div class="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#0E0E0C]">
-                <span class="text-[#6B7A5C] font-bold">✓</span>
-                <span>100% Invoice Transparency &mdash; Zero Contractor Markups</span>
-              </div>
-              <div class="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#0E0E0C]">
-                <span class="text-[#6B7A5C] font-bold">✓</span>
-                <span>Wholesale Distributor Rates for Steel, Cement & Italian Marble</span>
-              </div>
-              <div class="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#0E0E0C]">
-                <span class="text-[#6B7A5C] font-bold">✓</span>
-                <span>Complete Flexibility to Upgrade Materials Mid-Way</span>
-              </div>
-              <div class="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#0E0E0C]">
-                <span class="text-[#6B7A5C] font-bold">✓</span>
-                <span>Weekly Physical Audit & Photographic Progress Ledger</span>
-              </div>
-            </div>
-
-            <button 
-              (click)="dataService.openConsultationModal('Cost-Plus Model Inquiry')"
-              class="w-full py-3 rounded-full bg-[#B5562C] hover:bg-[#97431F] text-[#F7F4EE] font-mono text-xs font-semibold uppercase tracking-wider shadow-lg shadow-[#B5562C]/30 cursor-pointer"
-            >
-              Opt for Cost-Plus Model &rarr;
-            </button>
           </div>
 
-          <!-- Lump-Sum Fixed Price Contract Card -->
-          <div class="glass-card rounded-2xl p-7 border border-[#F7F4EE]/15 relative overflow-hidden bg-[#0A0A08]">
-            <div class="flex items-center justify-between mb-4">
-              <div>
-                <span class="text-xs font-mono uppercase tracking-widest text-[#F7F4EE]/50">Model 02 &middot; Fixed Budget</span>
-                <h3 class="text-2xl font-display text-[#F7F4EE] mt-1">Lump-Sum BOQ Price-Lock</h3>
-              </div>
-              <span class="px-3 py-1 rounded-full bg-[#0E0E0C] text-[#F7F4EE]/70 font-mono text-xs uppercase border border-[#F7F4EE]/20">
-                Guaranteed Fixed
-              </span>
-            </div>
-
-            <p class="text-sm text-[#F7F4EE]/80 font-light leading-relaxed mb-6">
-              A fixed, all-inclusive price locked before excavation. We absorb all material price fluctuations with guaranteed zero budget escalation.
-            </p>
-
-            <div class="space-y-3 font-mono text-xs text-[#F7F4EE]/85 mb-8">
-              <div class="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#0E0E0C]">
-                <span class="text-[#D4AF37] font-bold">✓</span>
-                <span>Strictly Guaranteed Zero Cost Escalations</span>
-              </div>
-              <div class="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#0E0E0C]">
-                <span class="text-[#D4AF37] font-bold">✓</span>
-                <span>Comprehensive 80-Page BOQ Spec Lock Prior to Excavation</span>
-              </div>
-              <div class="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#0E0E0C]">
-                <span class="text-[#D4AF37] font-bold">✓</span>
-                <span>Fixed Milestone-Linked Payment Tranches</span>
-              </div>
-              <div class="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#0E0E0C]">
-                <span class="text-[#D4AF37] font-bold">✓</span>
-                <span>Ideal for Bank Home Construction Loan Approvals</span>
-              </div>
-            </div>
-
-            <button 
-              (click)="dataService.openConsultationModal('Lump-Sum BOQ Inquiry')"
-              class="w-full py-3 rounded-full border border-[#D4AF37]/50 hover:border-[#D4AF37] text-[#D4AF37] font-mono text-xs font-semibold uppercase tracking-wider cursor-pointer"
-            >
-              Opt for Lump-Sum Contract &rarr;
-            </button>
-          </div>
-
-        </div>
-      }
-
-      <!-- 3. THE KRISHNA ADVANTAGE: 4 PILLARS (Buildhood's "Why Choose Us" Architecture) -->
-      <div class="mt-8 pt-6 border-t border-[#F8FAFC]/10">
-        <div class="text-center max-w-xl mx-auto mb-6">
-          <span class="text-xs font-mono uppercase tracking-[0.2em] text-[#D97746]">Institutional Trust</span>
-          <h3 class="text-2xl sm:text-3xl font-display text-[#F7F4EE] mt-1">The Krishna Construction Advantage</h3>
+          <button 
+            (click)="dataService.openConsultationModal('Cost-Plus Advantage Inquiry')"
+            class="px-6 py-3 rounded-xl bg-[#D4AF37] hover:bg-[#DFBA44] text-[#070A0F] font-bold text-xs uppercase tracking-wider flex-shrink-0 shadow-lg cursor-pointer whitespace-nowrap"
+          >
+            Explore Cost-Plus &rarr;
+          </button>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="p-6 rounded-2xl bg-[#0E0E0C] border border-[#F7F4EE]/10 group hover:border-[#D4AF37]/40 transition-all">
-            <div class="w-12 h-12 rounded-xl bg-[#D4AF37]/15 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] mb-4">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-              </svg>
+        <p class="mt-4 text-center text-xs text-[#F8FAFC]/50">
+          *Per sq.ft values are approximate based on Gurugram 2026 standards. Cost-plus model follows actual material costs.
+        </p>
+      </div>
+
+      <!-- 5. HOW IT WORKS: 4 SIMPLE STEPS (Buildhood Pattern) -->
+      <div id="how-it-works" class="mb-16 pb-12 border-b border-[#F8FAFC]/10">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span class="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
+            How It Works
+          </span>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-bold text-[#F8FAFC]">
+            From Concept to Completion in 4 Simple Steps
+          </h2>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-2xl border border-[#F8FAFC]/15 bg-[#0B1019] p-6 text-center shadow transition hover:-translate-y-1 hover:border-[#D4AF37]/40">
+            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#D4AF37] text-[#070A0F] shadow-lg mb-4 font-bold text-xl">
+              01
             </div>
-            <h4 class="font-display text-lg text-[#F7F4EE] mb-2">100% Invoice Transparency</h4>
-            <p class="text-xs text-[#F7F4EE]/65 font-light leading-relaxed m-0">
-              No inflated margins. Every weighbridge slip, GST bill, and steel test certificate is verified and handed directly to you weekly.
+            <span class="text-xs font-bold uppercase tracking-widest text-[#D4AF37]">Step 01</span>
+            <h3 class="mt-2 text-lg font-bold text-[#F8FAFC]">Select Package &amp; Book</h3>
+            <p class="mt-2 text-xs leading-relaxed text-[#F8FAFC]/70">
+              Choose a construction package, review our completed projects, and schedule an on-site plot survey with our team.
             </p>
           </div>
 
-          <div class="p-6 rounded-2xl bg-[#0E0E0C] border border-[#F7F4EE]/10 group hover:border-[#D4AF37]/40 transition-all">
-            <div class="w-12 h-12 rounded-xl bg-[#B5562C]/20 border border-[#B5562C]/40 flex items-center justify-center text-[#D97746] mb-4">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
+          <div class="rounded-2xl border border-[#F8FAFC]/15 bg-[#0B1019] p-6 text-center shadow transition hover:-translate-y-1 hover:border-[#D4AF37]/40">
+            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#D4AF37] text-[#070A0F] shadow-lg mb-4 font-bold text-xl">
+              02
             </div>
-            <h4 class="font-display text-lg text-[#F7F4EE] mb-2">Save Up to 10% on Cost</h4>
-            <p class="text-xs text-[#F7F4EE]/65 font-light leading-relaxed m-0">
-              Our direct institutional alliances with UltraTech and Tata Tiscon distributors pass bulk pricing savings directly into your pocket.
+            <span class="text-xs font-bold uppercase tracking-widest text-[#D4AF37]">Step 02</span>
+            <h3 class="mt-2 text-lg font-bold text-[#F8FAFC]">Design &amp; Agreement</h3>
+            <p class="mt-2 text-xs leading-relaxed text-[#F8FAFC]/70">
+              Finalize 2D/3D floor plans, Vastu layout, and elevations. Sign a transparent agreement with clear BOQ specifications.
             </p>
           </div>
 
-          <div class="p-6 rounded-2xl bg-[#0E0E0C] border border-[#F7F4EE]/10 group hover:border-[#D4AF37]/40 transition-all">
-            <div class="w-12 h-12 rounded-xl bg-[#D4AF37]/15 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] mb-4">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-              </svg>
+          <div class="rounded-2xl border border-[#F8FAFC]/15 bg-[#0B1019] p-6 text-center shadow transition hover:-translate-y-1 hover:border-[#D4AF37]/40">
+            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#D4AF37] text-[#070A0F] shadow-lg mb-4 font-bold text-xl">
+              03
             </div>
-            <h4 class="font-display text-lg text-[#F7F4EE] mb-2">Only Tier-1 Brands</h4>
-            <p class="text-xs text-[#F7F4EE]/65 font-light leading-relaxed m-0">
-              Strictly zero duplicate or B-grade materials. Certified testing for sand silt content, cube crush tests, and rebar yield strength.
+            <span class="text-xs font-bold uppercase tracking-widest text-[#D4AF37]">Step 03</span>
+            <h3 class="mt-2 text-lg font-bold text-[#F8FAFC]">Construction &amp; Tracking</h3>
+            <p class="mt-2 text-xs leading-relaxed text-[#F8FAFC]/70">
+              Construction begins with genuine Tier-1 materials. Track every milestone with regular video &amp; photo progress updates.
             </p>
           </div>
 
-          <div class="p-6 rounded-2xl bg-[#0E0E0C] border border-[#F7F4EE]/10 group hover:border-[#D4AF37]/40 transition-all">
-            <div class="w-12 h-12 rounded-xl bg-[#6B7A5C]/20 border border-[#6B7A5C]/40 flex items-center justify-center text-[#6B7A5C] mb-4">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
+          <div class="rounded-2xl border border-[#F8FAFC]/15 bg-[#0B1019] p-6 text-center shadow transition hover:-translate-y-1 hover:border-[#D4AF37]/40">
+            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#D4AF37] text-[#070A0F] shadow-lg mb-4 font-bold text-xl">
+              04
             </div>
-            <h4 class="font-display text-lg text-[#F7F4EE] mb-2">On-Time Handover Guarantee</h4>
-            <p class="text-xs text-[#F7F4EE]/65 font-light leading-relaxed m-0">
-              Daily on-site supervision by qualified civil engineers and milestone penalty clauses protecting your committed move-in date.
+            <span class="text-xs font-bold uppercase tracking-widest text-[#D4AF37]">Step 04</span>
+            <h3 class="mt-2 text-lg font-bold text-[#F8FAFC]">Handover &amp; Warranty</h3>
+            <p class="mt-2 text-xs leading-relaxed text-[#F8FAFC]/70">
+              On-time Griha Pravesh handover of your dream home with up to 10 years structural warranty and complete handover kit.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- 4. HOW IT WORKS: 4-STEP TIMELINE (Buildhood Exact Methodology) -->
-      <div class="mt-8 pt-6 border-t border-[#F8FAFC]/10">
-        <div class="text-center max-w-xl mx-auto mb-6">
-          <span class="text-xs font-mono uppercase tracking-[0.2em] text-[#38BDF8]">Execution Protocol</span>
-          <h3 class="text-2xl sm:text-3xl font-display text-[#F8FAFC] mt-1">From Raw Plot to Griha Pravesh in 4 Steps</h3>
+      <!-- 6. WHY CHOOSE KRISHNA CONSTRUCTION: THE 4 ADVANTAGES (Buildhood Pattern) -->
+      <div>
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span class="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
+            Why Choose Krishna Construction
+          </span>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-bold text-[#F8FAFC]">
+            The Krishna Construction Advantage
+          </h2>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="p-6 rounded-2xl bg-[#0E0E0C] border border-[#F7F4EE]/10 relative group">
-            <span class="text-3xl font-display text-[#D4AF37] font-light">01</span>
-            <h4 class="font-display text-lg text-[#F7F4EE] mt-2 mb-1">Plot Survey & Vastu Soil Test</h4>
-            <p class="text-xs text-[#F7F4EE]/65 font-light leading-relaxed">
-              Physical boundary contour survey, cardinal orientation alignment, and borewell bearing test at your Gurugram plot.
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-2xl border border-[#F8FAFC]/15 bg-[#0B1019] p-7 text-center shadow transition hover:-translate-y-1 hover:border-[#D4AF37]/40">
+            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#D4AF37]/15 text-[#D4AF37] mb-4">
+              <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-bold text-[#F8FAFC]">Transparent Process</h3>
+            <p class="mt-2 text-xs leading-relaxed text-[#F8FAFC]/70">
+              No hidden costs &mdash; every rupee accounted for with weekly weighbridge slips and GST billing reports.
             </p>
           </div>
 
-          <div class="p-6 rounded-2xl bg-[#0E0E0C] border border-[#F7F4EE]/10 relative group">
-            <span class="text-3xl font-display text-[#D4AF37] font-light">02</span>
-            <h4 class="font-display text-lg text-[#F7F4EE] mt-2 mb-1">3D Design & Sanction</h4>
-            <p class="text-xs text-[#F7F4EE]/65 font-light leading-relaxed">
-              2D floor plans, 3D photorealistic elevations, MEP drawings, and municipal sanctioning under Haryana building bye-laws.
+          <div class="rounded-2xl border border-[#F8FAFC]/15 bg-[#0B1019] p-7 text-center shadow transition hover:-translate-y-1 hover:border-[#D4AF37]/40">
+            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#D4AF37]/15 text-[#D4AF37] mb-4">
+              <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-bold text-[#F8FAFC]">Save Up to 10%</h3>
+            <p class="mt-2 text-xs leading-relaxed text-[#F8FAFC]/70">
+              Our direct wholesale alliances with UltraTech and Tata Tiscon distributors pass actual savings directly to you.
             </p>
           </div>
 
-          <div class="p-6 rounded-2xl bg-[#0E0E0C] border border-[#F7F4EE]/10 relative group">
-            <span class="text-3xl font-display text-[#D4AF37] font-light">03</span>
-            <h4 class="font-display text-lg text-[#F7F4EE] mt-2 mb-1">Milestone Construction</h4>
-            <p class="text-xs text-[#F7F4EE]/65 font-light leading-relaxed">
-              Fe-550D TMT casting, daily site engineer presence, and live WhatsApp progress reporting directly from Naveen Sharma's team.
+          <div class="rounded-2xl border border-[#F8FAFC]/15 bg-[#0B1019] p-7 text-center shadow transition hover:-translate-y-1 hover:border-[#D4AF37]/40">
+            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#D4AF37]/15 text-[#D4AF37] mb-4">
+              <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-bold text-[#F8FAFC]">Quality Material</h3>
+            <p class="mt-2 text-xs leading-relaxed text-[#F8FAFC]/70">
+              We use only trusted brands &mdash; UltraTech Cement, Tata Tiscon Rebars, Asian Paints, Jaquar, and Kohler.
             </p>
           </div>
 
-          <div class="p-6 rounded-2xl bg-[#0E0E0C] border border-[#F7F4EE]/10 relative group">
-            <span class="text-3xl font-display text-[#D4AF37] font-light">04</span>
-            <h4 class="font-display text-lg text-[#F7F4EE] mt-2 mb-1">Handover & 10-Yr Warranty</h4>
-            <p class="text-xs text-[#F7F4EE]/65 font-light leading-relaxed">
-              Zero-punchlist Griha Pravesh handover, complete as-built documentation, and 10-year structural warranty certificate.
+          <div class="rounded-2xl border border-[#F8FAFC]/15 bg-[#0B1019] p-7 text-center shadow transition hover:-translate-y-1 hover:border-[#D4AF37]/40">
+            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#D4AF37]/15 text-[#D4AF37] mb-4">
+              <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-bold text-[#F8FAFC]">On-Time Delivery</h3>
+            <p class="mt-2 text-xs leading-relaxed text-[#F8FAFC]/70">
+              Dedicated on-site civil engineers, stage-wise milestone tracking, and penalty commitments protect your move-in date.
             </p>
           </div>
         </div>
@@ -445,7 +510,6 @@ interface SpecRow {
 })
 export class PackagesAndModelsComponent {
   readonly dataService = inject(ConstructionDataService);
-  readonly selectedTab = signal<'packages' | 'models' | 'compare'>('packages');
 
   readonly materialBrands = [
     { name: 'UltraTech', category: 'Cement' },
@@ -455,8 +519,8 @@ export class PackagesAndModelsComponent {
     { name: 'Jaquar', category: 'Sanitary' },
     { name: 'Kohler', category: 'Bath Fittings' },
     { name: 'Havells', category: 'Electrical' },
-    { name: 'Kajaria', category: 'Ceramics' },
-    { name: 'Supreme', category: 'Pipes & MEP' },
+    { name: 'Kajaria', category: 'Tiles' },
+    { name: 'Supreme', category: 'Piping' },
     { name: 'Dr. Fixit', category: 'Waterproofing' }
   ];
 
@@ -466,28 +530,28 @@ export class PackagesAndModelsComponent {
       name: 'Silver Essential',
       tier: 'Standard Turnkey',
       ratePerSqFt: 1850,
-      tagline: 'High quality essentials for investment builder floors',
-      structure: 'Fe-500D TMT, M-25 Grade RMC',
-      flooring: 'Vitrified tiles (₹65/sq.ft allowance)',
-      bathrooms: 'Cera / Hindware sanitaryware & chrome fittings',
-      doorsWindows: 'Flush doors with Teak veneer & UPVC frames',
-      paint: 'Asian Paints Tractor Emulsion internal',
-      electrical: 'Anchor Roma modular switches, Finolex wires',
-      highlights: ['Dedicated Site Engineer', '1-Year Maintenance Guarantee']
+      bestFor: 'Budget-conscious builders',
+      tagline: 'High quality essential specifications for investment builder floors.',
+      highlights: [
+        'Fe-500D TMT, Grade M-25 RMC',
+        'Vitrified tile flooring (₹65/sft)',
+        'Cera / Hindware sanitaryware',
+        'Dedicated on-site civil supervisor'
+      ]
     },
     {
       id: 'gold',
       name: 'Gold Premium',
       tier: 'Family Residence',
       ratePerSqFt: 2150,
-      tagline: 'Ideal for modern Gurugram kothis & independent floors',
-      structure: 'Tata Tiscon Fe-550D, M-30 Grade RMC',
-      flooring: 'Kajaria 4x2 GVT tiles & wooden flooring in master',
-      bathrooms: 'Jaquar Kubix series & wall-hung commodes',
-      doorsWindows: '8 ft Malaysian Sal wood frames & Fenesta UPVC',
-      paint: 'Asian Paints Apex Royale internal & exterior',
-      electrical: 'Schneider Opale / Havells Fabio switches',
-      highlights: ['Anti-Termite 10-Yr Guarantee', 'Soil Bearing Certified']
+      bestFor: 'Value-focused families',
+      tagline: 'Balanced finishes and quality materials with great value for money.',
+      highlights: [
+        'Tata Tiscon Fe-550D, M-30 RMC',
+        'Kajaria 4x2 GVT Large Slabs',
+        'Jaquar Kubix series bath fittings',
+        'Fenesta UPVC soundproof windows'
+      ]
     },
     {
       id: 'diamond',
@@ -495,115 +559,28 @@ export class PackagesAndModelsComponent {
       tier: 'Ultra Luxury Estate',
       ratePerSqFt: 2750,
       popular: true,
-      tagline: 'Our flagship specification matching Golf Course Road villas',
-      structure: 'JSW / Tata Tiscon Fe-550D, M-35 RMC with waterproofers',
-      flooring: 'Imported Italian Botticino / Statuario marble living',
-      bathrooms: 'Grohe & Kohler vanity counters with concealed cisterns',
-      doorsWindows: 'Teak wood main entrance door, DGU acoustic glass',
-      paint: 'Asian Paints Royale Aspira with PU polish on woodwork',
-      electrical: 'Legrand Arteor / Smart KNX automated switches',
-      highlights: ['Schindler Elevator Provision', 'Italian Marble Flooring', 'Zero Defect Handover']
+      bestFor: 'Most homeowners',
+      tagline: 'Premium materials and finishes matching Golf Course Road villas.',
+      highlights: [
+        'Tata / JSW Fe-550D, M-35 RMC',
+        'Imported Italian marble living room',
+        'Kohler / Grohe concealed fittings',
+        'Schindler elevator provision'
+      ]
     },
     {
       id: 'platinum',
       name: 'Platinum Bespoke',
       tier: 'Custom Mansion',
       ratePerSqFt: 3600,
-      tagline: 'Bespoke architectural masterpiece with private amenities',
-      structure: 'Seismic Zone IV monolithic shear wall design',
-      flooring: 'High-end Greek & Italian marble throughout all levels',
-      bathrooms: 'Villeroy & Boch / Hansgrohe custom fittings',
-      doorsWindows: 'Schüco German aluminum slimline thermal facades',
-      paint: 'Stucco, microcement & imported textured Italian coatings',
-      electrical: 'Full KNX home automation with Daikin VRV HVAC',
-      highlights: ['Rooftop Pergola & Infinity Pool', 'Private High-Speed Lift', 'Complete Smart Living']
-    }
-  ];
-
-  readonly specMatrix: SpecRow[] = [
-    {
-      category: 'Steel & Rebars',
-      silver: 'Primary Fe-500D (Kamdhenu / Rathi)',
-      gold: 'Tata Tiscon Fe-550D Super Ductile',
-      diamond: 'Tata Tiscon / JSW Neosteel Fe-550D',
-      platinum: 'Corrosion-Resistant Epoxy Coated Fe-550D'
-    },
-    {
-      category: 'Cement & Concrete',
-      silver: 'UltraTech / ACC Grade 43/53',
-      gold: 'UltraTech Weather Plus / M-30 RMC',
-      diamond: 'M-30 / M-35 Design Mix with BASF waterproofing',
-      platinum: 'M-35 High Performance Self-Compacting RMC'
-    },
-    {
-      category: 'Floor-to-Ceiling Height',
-      silver: '10.0 Feet clear',
-      gold: '10.5 Feet clear',
-      diamond: '11.5 Feet clear with double height living area',
-      platinum: '12.5 Feet grand ceiling height throughout'
-    },
-    {
-      category: 'Living & Dining Flooring',
-      silver: 'Double Charge Vitrified Tiles (₹65/sft)',
-      gold: 'Kajaria 4x2 GVT Large Slabs (₹120/sft)',
-      diamond: 'Imported Italian Botticino / Statuario Marble',
-      platinum: 'Book-matched Greek Thassos & Statuario Marble'
-    },
-    {
-      category: 'Master Bedroom Flooring',
-      silver: 'Anti-skid Vitrified Tiles',
-      gold: 'Laminated Wooden Flooring (AC4 German)',
-      diamond: 'Engineered Hardwood / Italian Marble',
-      platinum: 'Herringbone Pattern Burmese Teak Parquet'
-    },
-    {
-      category: 'Sanitary & CP Fittings',
-      silver: 'Cera / Hindware Premium',
-      gold: 'Jaquar Kubix / Florentine Wall-Hung',
-      diamond: 'Kohler / Grohe Concealed Diverters',
-      platinum: 'Villeroy & Boch / Hansgrohe Axor Luxury'
-    },
-    {
-      category: 'Plumbing & Drainage',
-      silver: 'Prince / Supreme PVC & CPVC',
-      gold: 'Supreme SDR-11 CPVC & SWR pipes',
-      diamond: 'German Viega / Astral Silencio Low-Noise',
-      platinum: 'Geberit Concealed Piping & Dual Drainage'
-    },
-    {
-      category: 'Windows & Glazing',
-      silver: 'UPVC 2-Track Windows with 5mm glass',
-      gold: 'Fenesta 3-Track UPVC with mesh',
-      diamond: 'DGU 24mm Acoustic Soundproof Glass',
-      platinum: 'Schüco German Thermal-Break Slimline Aluminum'
-    },
-    {
-      category: 'Doors & Frames',
-      silver: 'Marandi wood frames with flush doors',
-      gold: 'Malaysian Sal wood with Teak veneer',
-      diamond: '8-ft Teak main door with Italian mortise locks',
-      platinum: 'Solid Burma Teak pivot door with biometric lock'
-    },
-    {
-      category: 'Electrical & Switches',
-      silver: 'Anchor Roma / Finolex FRLS wires',
-      gold: 'Havells Fabio / Schneider Opale',
-      diamond: 'Legrand Arteor with Smart KNX provisions',
-      platinum: 'Full KNX Home Automation & Smart Lighting'
-    },
-    {
-      category: 'Passenger Elevator',
-      silver: 'Lift shaft civil opening only',
-      gold: 'Reinforced lift shaft + electrical tie-in',
-      diamond: 'Schindler / Otis provision with granite cladding',
-      platinum: 'Private Glass Panoramic Gearless Elevator Included'
-    },
-    {
-      category: 'Structural Warranty',
-      silver: '1 Year Free Maintenance',
-      gold: '5 Years Seepage & Core Warranty',
-      diamond: '10 Years Structural Integrity Certificate',
-      platinum: '10 Years Comprehensive + Annual Health Audits'
+      bestFor: 'Luxury estates & mansions',
+      tagline: 'Top-tier luxury specifications, bespoke detailing & smart living.',
+      highlights: [
+        'Monolithic shear-wall engineering',
+        'Full Italian marble throughout',
+        'Schüco German aluminum facades',
+        'Full KNX smart home automation'
+      ]
     }
   ];
 

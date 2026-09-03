@@ -51,16 +51,16 @@ import { ConstructionDataService } from '../../services/construction-data.servic
           </div>
         </a>
 
-        <!-- Center Links (Single Row) -->
+        <!-- Center Links (Buildhood Clean Style) -->
         <nav class="hidden lg:flex items-center gap-5 xl:gap-7 font-mono text-[0.72rem] tracking-[0.12em] uppercase text-[#F8FAFC]/75 whitespace-nowrap">
-          <a href="#three-stage" class="hover:text-[#D4AF37] transition-colors whitespace-nowrap">Build</a>
-          <a href="#packages" class="hover:text-[#D4AF37] transition-colors whitespace-nowrap">Packages</a>
-          <a href="#standards" class="hover:text-[#D4AF37] transition-colors whitespace-nowrap">Standards</a>
           <a href="#services" class="hover:text-[#D4AF37] transition-colors whitespace-nowrap">Services</a>
+          <a href="#models" class="hover:text-[#D4AF37] transition-colors whitespace-nowrap">Contract Models</a>
+          <a href="#packages" class="hover:text-[#D4AF37] transition-colors whitespace-nowrap">Packages</a>
+          <a href="#how-it-works" class="hover:text-[#D4AF37] transition-colors whitespace-nowrap">How It Works</a>
           <a href="#calculator" class="hover:text-[#D4AF37] transition-colors whitespace-nowrap">Estimator</a>
-          <a href="#visualizer" class="hover:text-[#D4AF37] transition-colors whitespace-nowrap">Renovations</a>
-          <a href="#faq" class="hover:text-[#D4AF37] transition-colors whitespace-nowrap">FAQ</a>
-          <a href="#contact" class="hover:text-[#D4AF37] transition-colors whitespace-nowrap">Office Desk</a>
+          <a href="#portfolio" class="hover:text-[#D4AF37] transition-colors whitespace-nowrap">Projects</a>
+          <a href="#testimonials" class="hover:text-[#D4AF37] transition-colors whitespace-nowrap">Reviews</a>
+          <a href="#contact" class="hover:text-[#D4AF37] transition-colors whitespace-nowrap">Contact</a>
         </nav>
 
         <!-- Right Quick Contact Pills (Single Line) -->
@@ -75,9 +75,9 @@ import { ConstructionDataService } from '../../services/construction-data.servic
 
           <button 
             (click)="dataService.openConsultationModal('Fixed Quote Request')"
-            class="luxury-btn bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] hover:from-[#1E40AF] hover:to-[#1D4ED8] text-white px-4 sm:px-5 py-2 rounded-full font-mono text-[0.72rem] tracking-wider uppercase font-semibold flex items-center gap-2 shadow-lg shadow-[#1D4ED8]/30 border border-[#38BDF8]/40 transition-all cursor-pointer whitespace-nowrap"
+            class="luxury-btn bg-gradient-to-r from-[#D4AF37] to-[#C4971A] hover:from-[#DFBA44] hover:to-[#D4AF37] text-[#070A0F] px-4 sm:px-5 py-2 rounded-full font-mono text-[0.72rem] tracking-wider uppercase font-bold flex items-center gap-2 shadow-lg shadow-[#D4AF37]/25 transition-all cursor-pointer whitespace-nowrap"
           >
-            <span>Get Fixed Quote</span>
+            <span>Get Quote</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
             </svg>
@@ -109,13 +109,14 @@ import { ConstructionDataService } from '../../services/construction-data.servic
           </div>
 
           <nav class="flex flex-col gap-3 font-display text-base text-[#F8FAFC]">
-            <a href="#three-stage" (click)="closeMobileMenu()" class="hover:text-[#D4AF37] py-1">3D Blueprint Stage</a>
+            <a href="#services" (click)="closeMobileMenu()" class="hover:text-[#D4AF37] py-1">Services</a>
+            <a href="#models" (click)="closeMobileMenu()" class="hover:text-[#D4AF37] py-1">Contract Models</a>
             <a href="#packages" (click)="closeMobileMenu()" class="hover:text-[#D4AF37] py-1">Packages</a>
-            <a href="#standards" (click)="closeMobileMenu()" class="hover:text-[#D4AF37] py-1">Engineering Standards</a>
-            <a href="#services" (click)="closeMobileMenu()" class="hover:text-[#D4AF37] py-1">Core Services</a>
+            <a href="#how-it-works" (click)="closeMobileMenu()" class="hover:text-[#D4AF37] py-1">How It Works</a>
             <a href="#calculator" (click)="closeMobileMenu()" class="hover:text-[#D4AF37] py-1">Cost Estimator</a>
-            <a href="#visualizer" (click)="closeMobileMenu()" class="hover:text-[#D4AF37] py-1">Renovations</a>
-            <a href="#contact" (click)="closeMobileMenu()" class="hover:text-[#D4AF37] py-1">Soho Tower Office Desk</a>
+            <a href="#portfolio" (click)="closeMobileMenu()" class="hover:text-[#D4AF37] py-1">Projects</a>
+            <a href="#testimonials" (click)="closeMobileMenu()" class="hover:text-[#D4AF37] py-1">Reviews</a>
+            <a href="#contact" (click)="closeMobileMenu()" class="hover:text-[#D4AF37] py-1">Contact</a>
           </nav>
 
           <div class="pt-3 border-t border-[#F8FAFC]/10 flex flex-col gap-2.5">

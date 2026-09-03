@@ -13,22 +13,18 @@ interface FAQItem {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <section id="faq" class="py-7 sm:py-9 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto relative z-10">
+    <section id="faq" class="py-12 sm:py-16 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto relative z-10">
       
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-6">
-        <div class="inline-flex items-center justify-center gap-2 text-xs font-mono tracking-[0.2em] uppercase text-[#38BDF8] mb-2">
-          <span class="w-6 h-[1px] bg-[#1D4ED8]"></span>
-          <span>Clear Answers &middot; Gurugram Norms</span>
-          <span class="w-6 h-[1px] bg-[#1D4ED8]"></span>
-        </div>
-
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-light text-[#F8FAFC] leading-tight mb-2">
-          Frequently Asked <span class="italic text-[#D4AF37]">Construction Questions</span>.
+      <!-- Section Header (Buildhood Style) -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
+          FAQ
+        </span>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold text-[#F8FAFC]">
+          Frequently Asked Questions
         </h2>
-
-        <p class="text-sm sm:text-base text-[#F8FAFC]/75 font-light">
-          Everything you need to know about turnkey building contracts, Gurugram FAR permissions, material warranties, and developer alliances with Naveen Sharma.
+        <p class="mt-3 text-sm sm:text-base text-[#F8FAFC]/75 leading-relaxed">
+          Common questions about our packages, contract models, building permissions, and warranties.
         </p>
       </div>
 

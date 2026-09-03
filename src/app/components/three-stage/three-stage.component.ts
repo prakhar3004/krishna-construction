@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy, HostListener, signal, inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ConstructionDataService } from '../../services/construction-data.service';
 
 interface PhaseMilestone {
@@ -14,162 +15,269 @@ interface PhaseMilestone {
 @Component({
   selector: 'app-three-stage',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   template: `
-    <section class="relative pt-20 sm:pt-24 pb-6 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto z-10">
+    <section class="relative pt-24 sm:pt-28 pb-12 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto z-10">
       
-      <!-- HERO TWO-COLUMN GRID: LEFT COPY + RIGHT 3D STAGE (TIGHT, ZERO BLANK SPACE) -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center py-2 sm:py-3">
+      <!-- HERO TWO-COLUMN GRID: LEFT COPY & STATS + RIGHT QUICK QUOTE / 3D BLUEPRINT -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         
-        <!-- LEFT COLUMN: EDITORIAL TYPOGRAPHY -->
-        <div class="lg:col-span-6 xl:col-span-7 space-y-4 sm:space-y-4.5">
+        <!-- LEFT COLUMN: BUILDHOOD EDITORIAL CONTENT & 4 STAT BOXES -->
+        <div class="lg:col-span-7 space-y-6">
           
-          <!-- Eyebrow -->
-          <div class="flex items-center gap-3">
-            <span class="w-8 h-[1px] bg-gradient-to-r from-[#1D4ED8] to-transparent"></span>
-            <p class="font-mono text-[0.68rem] tracking-[0.24em] uppercase text-[#D4AF37] m-0 font-semibold">
-              Turnkey Home Builder &middot; Gurugram &amp; Delhi NCR
+          <!-- ISO Badge (Buildhood Style) -->
+          <div>
+            <span class="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/30 bg-[#0B1019] px-4 py-1.5 text-xs font-medium uppercase tracking-wide text-[#F8FAFC] shadow-sm backdrop-blur-sm">
+              <svg class="h-4 w-4 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+              <span>ISO 9001:2015 Certified &middot; DTCP Haryana Compliant</span>
+            </span>
+          </div>
+
+          <!-- Main Headline -->
+          <div>
+            <h1 class="text-4xl sm:text-5xl lg:text-[3.6rem] font-bold text-[#F8FAFC] leading-[1.08] tracking-tight m-0">
+              Best House Construction Company <span class="text-[#D4AF37]">in Gurugram</span>
+            </h1>
+            <p class="mt-2 text-xl sm:text-2xl font-semibold text-[#38BDF8]">
+              Build Right with Krishna Construction
             </p>
           </div>
 
-          <!-- Main Typographic Headline -->
-          <h1 class="font-display font-semibold text-4xl sm:text-6xl md:text-7xl lg:text-[4.5rem] text-[#F8FAFC] leading-[1.02] tracking-tight m-0">
-            We <span class="text-[#38BDF8] font-bold">Build</span> On Your Plot.<br />
-            We <span class="text-[#D4AF37] font-bold">Guarantee</span> The Quality.
-          </h1>
-
-          <!-- Subhead -->
-          <p class="text-base sm:text-lg text-[#F8FAFC]/80 font-normal leading-relaxed max-w-xl m-0">
-            Turnkey luxury villas and Stilt+4 floors built on your plot in Gurugram &amp; Delhi NCR. Transparent Cost-Plus billing, certified Tier-1 materials, and a 10-year structural warranty.
+          <!-- 2-Line Crisp Description -->
+          <p class="text-base sm:text-lg leading-relaxed text-[#F8FAFC]/80 max-w-xl m-0 font-normal">
+            Delivering luxury homes and Stilt+4 floors with transparent cost-plus construction contracts, expert architecture, and exceptional value. Gurugram's trusted home builder.
           </p>
 
-          <!-- CTAs & Reviews -->
-          <div class="flex flex-wrap items-center gap-3 pt-1">
-            <button 
-              (click)="dataService.openConsultationModal('Fixed Quote Request')"
-              class="luxury-btn bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] hover:from-[#1E40AF] hover:to-[#1D4ED8] text-white px-6 py-3 rounded-full text-xs font-mono font-semibold tracking-wider flex items-center gap-2.5 shadow-xl shadow-[#1D4ED8]/35 border border-[#38BDF8]/40 cursor-pointer"
+          <!-- 3 Primary Action Buttons -->
+          <div class="flex flex-wrap items-center gap-3.5 pt-1">
+            <a 
+              href="#packages"
+              class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#C4971A] hover:from-[#DFBA44] hover:to-[#D4AF37] text-[#070A0F] px-6 py-3 text-sm font-semibold tracking-wide transition-all shadow-lg shadow-[#D4AF37]/25"
             >
-              <span>Get Fixed Quote</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span>View Packages</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
               </svg>
-            </button>
-
-            <a 
-              href="#calculator"
-              class="luxury-btn border border-[#D4AF37]/50 hover:border-[#D4AF37] text-[#D4AF37] hover:text-[#FFF] px-5 py-3 rounded-full text-xs font-mono tracking-wider flex items-center gap-2 bg-[#0B1019]/60"
-            >
-              <span>Cost Estimator</span>
             </a>
 
-            <div class="flex items-center gap-2 font-mono text-xs text-[#F7F4EE]/80 pl-1">
-              <span class="text-[#D4AF37] tracking-widest">★★★★★</span>
-              <span class="font-bold text-[#F7F4EE]">4.9</span>
-              <span class="text-[#F7F4EE]/40">&middot;</span>
-              <span class="text-[#F7F4EE]/60">120+ Gurugram Reviews</span>
+            <a 
+              href="#portfolio"
+              class="inline-flex items-center rounded-xl border border-[#F8FAFC]/25 hover:border-[#D4AF37] hover:text-[#D4AF37] text-[#F8FAFC] px-5 py-3 text-sm font-medium transition-all bg-[#0B1019]/60 backdrop-blur-sm"
+            >
+              Our Projects
+            </a>
+
+            <a 
+              [href]="'tel:+91' + dataService.primaryPhone"
+              class="inline-flex items-center gap-2 rounded-xl border border-[#38BDF8]/40 hover:border-[#38BDF8] text-[#38BDF8] px-5 py-3 text-sm font-medium transition-all bg-[#0B1019]/60"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+              <span>Call Now</span>
+            </a>
+          </div>
+
+          <!-- 4 Stat Boxes (Buildhood Pattern) -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
+            <div class="rounded-xl border border-[#D4AF37]/20 bg-[#0B1019] p-4 text-center">
+              <p class="text-2xl sm:text-3xl font-extrabold text-[#D4AF37] font-mono">25+</p>
+              <p class="mt-1 text-[11px] font-medium uppercase tracking-wider text-[#F8FAFC]/70">Years Experience</p>
+            </div>
+
+            <div class="rounded-xl border border-[#D4AF37]/20 bg-[#0B1019] p-4 text-center">
+              <p class="text-2xl sm:text-3xl font-extrabold text-[#F8FAFC] font-mono">180+</p>
+              <p class="mt-1 text-[11px] font-medium uppercase tracking-wider text-[#F8FAFC]/70">Homes Delivered</p>
+            </div>
+
+            <div class="rounded-xl border border-[#D4AF37]/20 bg-[#0B1019] p-4 text-center">
+              <p class="text-2xl sm:text-3xl font-extrabold text-[#38BDF8] font-mono">100%</p>
+              <p class="mt-1 text-[11px] font-medium uppercase tracking-wider text-[#F8FAFC]/70">Transparent Cost</p>
+            </div>
+
+            <div class="rounded-xl border border-[#D4AF37]/20 bg-[#0B1019] p-4 text-center">
+              <p class="text-2xl sm:text-3xl font-extrabold text-[#D4AF37] font-mono">10-Yr</p>
+              <p class="mt-1 text-[11px] font-medium uppercase tracking-wider text-[#F8FAFC]/70">Structural Warranty</p>
             </div>
           </div>
 
-          <!-- Hindi Devotional Slogan -->
-          <p class="font-hindi italic text-sm sm:text-base text-[#F7F4EE]/90 m-0 pt-0.5">
-            <span class="text-[#D4AF37] font-semibold not-italic">{{ dataService.invocation }}</span> 
-            आपका सपना, हमारा संकल्प
-            <span class="text-xs font-display text-[#F7F4EE]/50 not-italic"> &mdash; your dream, our commitment.</span>
-          </p>
-
-          <!-- Founder Leadership Badge with Brand Logo -->
-          <div class="flex items-center gap-3.5 pt-2.5 border-t border-[#F8FAFC]/10 max-w-xl">
-            <div class="relative w-12 h-12 rounded-xl p-[2px] bg-gradient-to-br from-[#FFDF73] via-[#D4AF37] to-[#38BDF8] shadow-[0_0_20px_rgba(212,175,55,0.45)] flex-shrink-0">
-              <img 
-                src="images/krishna_logo.jpg" 
-                alt="Krishna Construction Monogram" 
-                class="w-full h-full object-cover rounded-[9px] bg-[#070A0F]"
-              />
-            </div>
-            <p class="text-xs text-[#F8FAFC]/80 leading-snug font-sans m-0">
-              <strong class="text-[#F8FAFC] font-medium">25+ years experience</strong> &middot; 
-              <strong class="text-[#D4AF37] font-medium">Naveen Sharma</strong> on-site leadership &middot; 
-              Corporate Office: Soho Precision Tower &middot; Serving Gurugram &amp; Delhi NCR.
-            </p>
-          </div>
         </div>
 
-        <!-- RIGHT COLUMN: 3D PROPER GHAR BLUEPRINT CANVAS + PHASE SELECTOR -->
-        <div class="lg:col-span-6 xl:col-span-5 flex flex-col items-center w-full">
+        <!-- RIGHT COLUMN: BUILDHOOD "GET A FREE QUOTE IN JUST 1 HOUR" FORM + 3D TOGGLE -->
+        <div class="lg:col-span-5 w-full">
           
-          <!-- 3D Canvas Box (Responsive Height, No Blank Space) -->
-          <div class="relative w-full h-[320px] sm:h-[400px] lg:h-[440px] rounded-2xl overflow-hidden glass-card border border-[#D4AF37]/35 shadow-2xl bg-[#0B1019]">
-            <canvas #canvasRef class="absolute inset-0 w-full h-full block"></canvas>
-            
-            <!-- Atmospheric Gradients -->
-            <div class="absolute inset-0 bg-radial-[at_50%_25%] from-[#1D4ED8]/15 via-transparent to-[#070A0F]/90 pointer-events-none"></div>
+          <!-- Mode Switcher: Quick Quote vs 3D Blueprint -->
+          <div class="flex items-center justify-end gap-2 mb-3">
+            <button 
+              type="button"
+              (click)="rightPanelMode.set('quote')"
+              class="px-3 py-1 rounded-full text-xs font-mono tracking-wider uppercase transition-all cursor-pointer"
+              [class.bg-[#D4AF37]]="rightPanelMode() === 'quote'"
+              [class.text-[#070A0F]]="rightPanelMode() === 'quote'"
+              [class.font-bold]="rightPanelMode() === 'quote'"
+              [class.text-[#F8FAFC]/60]="rightPanelMode() !== 'quote'"
+              [class.bg-[#0B1019]]="rightPanelMode() !== 'quote'"
+            >
+              Get Quote
+            </button>
+            <button 
+              type="button"
+              (click)="rightPanelMode.set('blueprint')"
+              class="px-3 py-1 rounded-full text-xs font-mono tracking-wider uppercase transition-all cursor-pointer"
+              [class.bg-[#D4AF37]]="rightPanelMode() === 'blueprint'"
+              [class.text-[#070A0F]]="rightPanelMode() === 'blueprint'"
+              [class.font-bold]="rightPanelMode() === 'blueprint'"
+              [class.text-[#F8FAFC]/60]="rightPanelMode() !== 'blueprint'"
+              [class.bg-[#0B1019]]="rightPanelMode() !== 'blueprint'"
+            >
+              3D Blueprint
+            </button>
+          </div>
 
-            <!-- Top HUD Badge -->
-            <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
-              <span class="px-2.5 py-0.5 rounded-full text-[0.62rem] font-mono tracking-widest uppercase bg-[#070A0F]/90 text-[#D4AF37] border border-[#D4AF37]/40 backdrop-blur-md flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse"></span>
-                <span>3D Villa Blueprint</span>
-              </span>
-              <span class="text-[0.62rem] font-mono text-[#38BDF8] bg-[#1D4ED8]/25 px-2.5 py-0.5 rounded-full border border-[#38BDF8]/40 backdrop-blur-md font-semibold">
-                Build: {{ currentProgressPercent() }}%
-              </span>
-            </div>
-
-            <!-- Bottom Floating Phase Label -->
-            <div class="absolute bottom-2.5 left-2.5 right-2.5 bg-[#070A0F]/95 backdrop-blur-md border border-[#D4AF37]/25 rounded-xl p-2.5 z-10 pointer-events-none shadow-xl">
-              <div class="flex items-center justify-between mb-0.5">
-                <span class="text-xs font-mono text-[#D4AF37] font-semibold">{{ activePhase().stage }}</span>
-                <span class="text-[0.62rem] font-mono text-[#38BDF8] font-bold uppercase">{{ activePhase().spec }}</span>
+          <!-- PANEL A: THE BUILDHOOD 1-HOUR QUOTE FORM -->
+          @if (rightPanelMode() === 'quote') {
+            <div class="rounded-2xl border border-[#D4AF37]/35 bg-[#0B1019] p-6 sm:p-7 shadow-2xl relative overflow-hidden">
+              <div class="flex items-center justify-between pb-3 border-b border-[#F8FAFC]/10 mb-4">
+                <div>
+                  <h2 class="text-xl font-bold text-[#F8FAFC]">Get a Free Quote in 1 Hour</h2>
+                  <p class="text-xs text-[#F8FAFC]/70 mt-1">Know your construction cost & plan your home with confidence.</p>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-[#D4AF37]/15 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-bold text-sm">
+                  ₹
+                </div>
               </div>
-              <h4 class="text-xs sm:text-sm font-display text-[#F8FAFC] leading-snug m-0">
-                {{ activePhase().title }}
-              </h4>
+
+              <form (submit)="onHeroSubmit($event)" class="space-y-4">
+                <div>
+                  <label class="block text-xs font-medium uppercase tracking-wider text-[#F8FAFC]/80 mb-1.5">
+                    Your Name *
+                  </label>
+                  <input 
+                    type="text" 
+                    required 
+                    [(ngModel)]="heroName"
+                    name="heroName"
+                    placeholder="e.g. Rahul Sharma" 
+                    class="w-full rounded-xl border border-[#F8FAFC]/20 bg-[#070A0F] px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder:text-[#F8FAFC]/40 focus:border-[#D4AF37] focus:outline-none transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-medium uppercase tracking-wider text-[#F8FAFC]/80 mb-1.5">
+                    Mobile Number *
+                  </label>
+                  <input 
+                    type="tel" 
+                    required 
+                    [(ngModel)]="heroPhone"
+                    name="heroPhone"
+                    placeholder="10-digit mobile number" 
+                    pattern="[0-9]{10}"
+                    class="w-full rounded-xl border border-[#F8FAFC]/20 bg-[#070A0F] px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder:text-[#F8FAFC]/40 focus:border-[#D4AF37] focus:outline-none transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-medium uppercase tracking-wider text-[#F8FAFC]/80 mb-1.5">
+                    Select Project Type *
+                  </label>
+                  <select 
+                    [(ngModel)]="heroService"
+                    name="heroService"
+                    class="w-full rounded-xl border border-[#F8FAFC]/20 bg-[#070A0F] px-3.5 py-2.5 text-sm text-[#F8FAFC] focus:border-[#D4AF37] focus:outline-none transition-colors"
+                  >
+                    <option value="Residential Turnkey Villa">Residential Turnkey Villa / Kothi</option>
+                    <option value="Stilt+4 Floors Independent">Stilt + 4 Floors (Builder Floor)</option>
+                    <option value="Luxury Home Renovation">Luxury Home Renovation</option>
+                    <option value="Architectural & Vastu Design">Architectural & Vastu Design</option>
+                  </select>
+                </div>
+
+                <button 
+                  type="submit" 
+                  class="w-full py-3 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#C4971A] hover:from-[#DFBA44] hover:to-[#D4AF37] text-[#070A0F] text-sm font-bold uppercase tracking-wider shadow-lg shadow-[#D4AF37]/20 transition-all cursor-pointer"
+                >
+                  Get Free Consultation &rarr;
+                </button>
+
+                <div class="flex flex-wrap items-center justify-between text-[11px] text-[#F8FAFC]/60 pt-1">
+                  <span class="inline-flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5 text-[#38BDF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    Response in 24 hours
+                  </span>
+                  <span class="inline-flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    No spam &middot; Zero obligation
+                  </span>
+                </div>
+              </form>
             </div>
-          </div>
+          }
 
-          <!-- Interactive Phase Control Pills (Compact & Responsive Grid) -->
-          <div class="w-full grid grid-cols-5 gap-1 sm:gap-1.5 mt-2">
-            @for (phase of phases; track phase.num; let i = $index) {
-              <button 
-                type="button"
-                (click)="selectPhase(i)"
-                class="py-1.5 px-0.5 sm:py-2 sm:px-1 rounded-lg border text-center transition-all duration-300 flex flex-col items-center justify-center cursor-pointer"
-                [class.bg-gradient-to-br]="selectedPhaseIndex() === i"
-                [class.from-[#D4AF37]]="selectedPhaseIndex() === i"
-                [class.to-[#C4971A]]="selectedPhaseIndex() === i"
-                [class.text-[#070A0F]]="selectedPhaseIndex() === i"
-                [class.border-[#D4AF37]]="selectedPhaseIndex() === i"
-                [class.shadow-[0_0_15px_rgba(212,175,55,0.4)]]="selectedPhaseIndex() === i"
-                [class.font-bold]="selectedPhaseIndex() === i"
-                [class.bg-[#0B1019]]="selectedPhaseIndex() !== i"
-                [class.border-[#38BDF8]/20]="selectedPhaseIndex() !== i"
-                [class.text-[#F8FAFC]/65]="selectedPhaseIndex() !== i"
-                [class.hover:border-[#38BDF8]/50]="selectedPhaseIndex() !== i"
-              >
-                <span class="text-[0.5rem] sm:text-[0.56rem] font-mono uppercase tracking-wider block leading-none">Phase</span>
-                <span class="text-[0.68rem] sm:text-xs font-mono font-bold block mt-0.5">{{ phase.num }}</span>
-              </button>
-            }
-          </div>
+          <!-- PANEL B: 3D BLUEPRINT VISUALIZER -->
+          @if (rightPanelMode() === 'blueprint') {
+            <div class="space-y-3">
+              <div class="relative w-full h-[340px] sm:h-[380px] rounded-2xl overflow-hidden border border-[#D4AF37]/35 shadow-2xl bg-[#0B1019]">
+                <canvas #canvasRef class="absolute inset-0 w-full h-full block"></canvas>
+                <div class="absolute inset-0 bg-radial-[at_50%_25%] from-[#1D4ED8]/15 via-transparent to-[#070A0F]/90 pointer-events-none"></div>
+
+                <!-- Top HUD Badge -->
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
+                  <span class="px-2.5 py-0.5 rounded-full text-[0.62rem] font-mono tracking-widest uppercase bg-[#070A0F]/90 text-[#D4AF37] border border-[#D4AF37]/40 backdrop-blur-md flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse"></span>
+                    <span>3D Villa Blueprint</span>
+                  </span>
+                  <span class="text-[0.62rem] font-mono text-[#38BDF8] bg-[#1D4ED8]/25 px-2.5 py-0.5 rounded-full border border-[#38BDF8]/40 backdrop-blur-md font-semibold">
+                    Build: {{ currentProgressPercent() }}%
+                  </span>
+                </div>
+
+                <!-- Bottom Floating Phase Label -->
+                <div class="absolute bottom-2.5 left-2.5 right-2.5 bg-[#070A0F]/95 backdrop-blur-md border border-[#D4AF37]/25 rounded-xl p-2.5 z-10 pointer-events-none shadow-xl">
+                  <div class="flex items-center justify-between mb-0.5">
+                    <span class="text-xs font-mono text-[#D4AF37] font-semibold">{{ activePhase().stage }}</span>
+                    <span class="text-[0.62rem] font-mono text-[#38BDF8] font-bold uppercase">{{ activePhase().spec }}</span>
+                  </div>
+                  <h4 class="text-xs sm:text-sm font-display text-[#F8FAFC] leading-snug m-0">
+                    {{ activePhase().title }}
+                  </h4>
+                </div>
+              </div>
+
+              <!-- Phase Selector Buttons -->
+              <div class="w-full grid grid-cols-5 gap-1.5">
+                @for (phase of phases; track phase.num; let i = $index) {
+                  <button 
+                    type="button"
+                    (click)="selectPhase(i)"
+                    class="py-2 px-1 rounded-lg border text-center transition-all duration-300 flex flex-col items-center justify-center cursor-pointer"
+                    [class.bg-gradient-to-br]="selectedPhaseIndex() === i"
+                    [class.from-[#D4AF37]]="selectedPhaseIndex() === i"
+                    [class.to-[#C4971A]]="selectedPhaseIndex() === i"
+                    [class.text-[#070A0F]]="selectedPhaseIndex() === i"
+                    [class.border-[#D4AF37]]="selectedPhaseIndex() === i"
+                    [class.font-bold]="selectedPhaseIndex() === i"
+                    [class.bg-[#0B1019]]="selectedPhaseIndex() !== i"
+                    [class.border-[#38BDF8]/20]="selectedPhaseIndex() !== i"
+                    [class.text-[#F8FAFC]/65]="selectedPhaseIndex() !== i"
+                  >
+                    <span class="text-[0.52rem] font-mono uppercase tracking-wider block leading-none">Phase</span>
+                    <span class="text-xs font-mono font-bold block mt-0.5">{{ phase.num }}</span>
+                  </button>
+                }
+              </div>
+            </div>
+          }
 
         </div>
 
-      </div>
-
-      <!-- BOTTOM TICKER STRIP (Compact & Responsive) -->
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 py-2 px-4 rounded-xl bg-[#0B1019]/90 border border-[#D4AF37]/20 font-mono text-[0.62rem] sm:text-[0.65rem] tracking-wider uppercase text-[#F8FAFC]/60 mt-3 shadow-lg">
-        <div class="flex items-center gap-2.5 flex-wrap justify-center sm:justify-start">
-          <span class="w-2 h-2 rounded-full bg-[#10B981] animate-ping"></span>
-          <span class="text-[#D4AF37] font-semibold">Krishna Construction</span>
-          <span>&middot;</span>
-          <span class="text-[#F8FAFC]/90">Naveen Sharma Desk</span>
-          <span class="hidden md:inline">&middot;</span>
-          <span class="hidden md:inline text-[#38BDF8]">Corporate Office: Soho Precision Tower &middot; Delhi NCR</span>
-        </div>
-
-        <div class="flex items-center gap-4">
-          <span class="text-[#D4AF37]">Turnkey Residential Construction, Stilt+4 Floors &amp; Architecture &middot; Delhi NCR</span>
-        </div>
       </div>
 
     </section>
@@ -183,6 +291,29 @@ export class ThreeStageComponent implements AfterViewInit, OnDestroy {
 
   readonly selectedPhaseIndex = signal<number>(2); // Default to Phase 03 Superstructure
   readonly currentProgressPercent = signal<number>(65);
+
+  readonly rightPanelMode = signal<'quote' | 'blueprint'>('quote');
+  heroName = '';
+  heroPhone = '';
+  heroService = 'Residential Turnkey Villa';
+
+  onHeroSubmit(event: Event) {
+    event.preventDefault();
+    const name = this.heroName.trim() || 'Valued Client';
+    const phone = this.heroPhone.trim() || 'N/A';
+    const service = this.heroService;
+    
+    const msg = `Hello Naveen Ji (Krishna Construction),
+I submitted a 1-Hour Quote Request on your website:
+• Name: ${name}
+• Mobile: ${phone}
+• Project Type: ${service}
+
+Please provide a free consultation and construction estimate.`;
+
+    window.open(`https://wa.me/91${this.dataService.primaryPhone}?text=${encodeURIComponent(msg)}`, '_blank');
+    this.dataService.openConsultationModal(`Quote Request: ${service} (${name})`);
+  }
 
   readonly phases: PhaseMilestone[] = [
     {
