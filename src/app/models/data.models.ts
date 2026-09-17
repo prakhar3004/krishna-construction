@@ -41,7 +41,7 @@ export interface CalculationResult {
 export interface ProjectShowcase {
   id: string;
   title: string;
-  category: 'Turnkey Villa' | 'Stilt+4 Floors' | 'Luxury Renovation' | 'Architectural Sanction';
+  category: 'Turnkey Villa' | 'Builder Floors' | 'Luxury Renovation' | 'Architectural Sanction';
   location: string;
   plotOrSize: string;
   status: 'Delivered' | 'Active Construction' | 'Handover in Progress' | 'Finishing Stage';

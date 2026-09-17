@@ -8,20 +8,20 @@ import { ConstructionDataService } from '../../services/construction-data.servic
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <section id="contact" class="py-12 sm:py-16 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto relative z-10">
-      <div class="rounded-3xl border border-[#D4AF37]/30 bg-[#0B1019] p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+    <section id="contact" class="pt-5 pb-5 sm:pt-7 sm:pb-7 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+      <div class="rounded-3xl border border-[#D4AF37]/30 bg-[#0B1019] p-5 sm:p-6 lg:p-7 shadow-2xl relative overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
           
           <!-- Left: Call to Action & Value Points (7 cols) -->
-          <div class="lg:col-span-7 space-y-6">
+          <div class="lg:col-span-7 space-y-4">
             <div>
-              <span class="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
+              <span class="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
                 Start Your Project
               </span>
-              <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F8FAFC] leading-tight">
+              <h2 class="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-[#F8FAFC] leading-tight">
                 Ready to Build Your Dream Home?
               </h2>
-              <p class="mt-3 text-base text-[#F8FAFC]/75 leading-relaxed font-light max-w-xl">
+              <p class="mt-2 text-xs sm:text-sm text-[#F8FAFC]/75 leading-relaxed font-light max-w-xl">
                 Get a transparent construction estimate from Gurugram's trusted residential builder. Our experts will help you choose the right package and contract model.
               </p>
             </div>
@@ -140,7 +140,7 @@ import { ConstructionDataService } from '../../services/construction-data.servic
                     class="w-full bg-[#0B1019] border border-[#F8FAFC]/20 focus:border-[#D4AF37] rounded-xl px-3 py-2.5 text-sm text-[#F8FAFC] outline-none transition-all"
                   >
                     <option value="Residential Turnkey Villa">Residential Turnkey Villa / Kothi</option>
-                    <option value="Stilt+4 Floors Independent">Stilt + 4 Floors (Builder Floor)</option>
+                    <option value="Independent Multi-Storey Floors">Independent Multi-Storey Floors</option>
                     <option value="Luxury Home Renovation">Luxury Home Renovation</option>
                     <option value="Cost-Plus Model Construction">Cost-Plus Model Construction</option>
                   </select>
@@ -167,7 +167,7 @@ import { ConstructionDataService } from '../../services/construction-data.servic
                 </button>
 
                 <div class="flex items-center justify-between text-[11px] text-[#F8FAFC]/50 pt-1">
-                  <span>⏱️ Response in 24 hours</span>
+                  <span>⏱️ Quick response within hours</span>
                   <span>🛡️ No spam &middot; Zero obligation</span>
                 </div>
               </form>
@@ -183,7 +183,7 @@ export class ContactSectionComponent {
 
   clientName = '';
   clientPhone = '';
-  serviceType = 'Turnkey Plot Construction';
+  serviceType = 'Residential Turnkey Villa';
   plotLocation = '';
   plotSize = '';
   message = '';

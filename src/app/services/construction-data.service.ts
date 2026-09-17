@@ -15,6 +15,39 @@ export class ConstructionDataService {
   readonly googleMapsUrl = 'https://maps.google.com/?q=Soho+Precision+Tower+Gurugram';
   readonly email = 'contact@krishnaconstructiondelhincr.com';
 
+  // Theme Management (Light / Dark Mode)
+  readonly isDarkMode = signal<boolean>(true);
+
+  constructor() {
+    this.initTheme();
+  }
+
+  initTheme() {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('krishna_theme');
+      const isDark = saved !== null ? saved === 'dark' : true;
+      this.setTheme(isDark);
+    }
+  }
+
+  toggleTheme() {
+    this.setTheme(!this.isDarkMode());
+  }
+
+  setTheme(isDark: boolean) {
+    this.isDarkMode.set(isDark);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('krishna_theme', isDark ? 'dark' : 'light');
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    }
+  }
+
   // Calculator State Signals
   readonly selectedPlotSqYards = signal<number>(250);
   readonly selectedFloors = signal<number>(4); // Stilt + 4 Floors (Standard Gurugram Builder Floor model)
@@ -78,7 +111,7 @@ export class ConstructionDataService {
     {
       id: 'dtcp-hsvp',
       authority: 'DTCP Haryana & HSVP',
-      title: 'Haryana Municipal Sanction & Stilt+4 Bye-Laws',
+      title: 'Haryana Municipal Sanction & Residential Building Bye-Laws',
       badge: 'Statutory Authority',
       complianceCode: 'Haryana Building Code 2017 / 2024 Amendment',
       scope: 'Gurugram Municipal Corporation (MCG) & HSVP Sectors',
@@ -214,7 +247,7 @@ export class ConstructionDataService {
       title: 'The Palm Springs Villa 42',
       category: 'Turnkey Villa',
       location: 'Sector-54, Golf Course Road Corridor',
-      plotOrSize: '500 Sq. Yards · Stilt + 4 Floors',
+      plotOrSize: '500 Sq. Yards · Multi-Storey Villa',
       status: 'Active Construction',
       description: 'Ultra-luxury monolithic villa featuring deep RCC raft foundation, double-height living room, private gearless Schindler elevator, and Italian Botticino marble throughout.',
       features: ['M-35 Concrete Batching', 'Tata Tiscon Fe-550D Steel', 'Private Plunge Pool Terrace'],
@@ -223,9 +256,9 @@ export class ConstructionDataService {
     {
       id: 'sushant-lok-kothi',
       title: 'Sushant Lok Contemporary Kothi',
-      category: 'Stilt+4 Floors',
+      category: 'Builder Floors',
       location: 'Sector-57, Sushant Lok 2',
-      plotOrSize: '350 Sq. Yards · Stilt + 4 Floors',
+      plotOrSize: '350 Sq. Yards · 4 Independent Floors',
       status: 'Finishing Stage',
       description: 'Custom turnkey builder floor built for joint families. High-end DGU 24mm acoustic soundproof windows, automated stilt parking, and rooftop pergola terrace.',
       features: ['DGU Acoustic Glazing', 'German Viega Plumbing', 'Solar Water Heating 500LPD'],
@@ -236,7 +269,7 @@ export class ConstructionDataService {
       title: 'Rosewood City Modern Residence',
       category: 'Turnkey Villa',
       location: 'Sector-49, Rosewood City',
-      plotOrSize: '250 Sq. Yards · Stilt + 3 Floors',
+      plotOrSize: '250 Sq. Yards · Duplex Villa',
       status: 'Active Construction',
       description: 'Turnkey residential kothi with Vastu-aligned North-East entrance, cantilevered front balconies, Italian Statuario marble living room, and modular German kitchen.',
       features: ['Vastu Compliant Layout', 'Full Rainwater Harvesting', 'Schneider Smart Automation'],
@@ -247,7 +280,7 @@ export class ConstructionDataService {
       title: 'South City 2 Luxury Villa',
       category: 'Turnkey Villa',
       location: 'Sector-50, South City 2',
-      plotOrSize: '400 Sq. Yards · Stilt + 4 Floors',
+      plotOrSize: '400 Sq. Yards · Luxury Residence',
       status: 'Delivered',
       description: 'Delivered in 11 months with complete HSVP Occupancy Certificate. Features 11.5-ft clear ceiling heights, private elevator, and Italian louvered exterior facade.',
       features: ['Full HSVP OC Handover', '10-Year Structural Warranty', 'Italian Stone Facade'],
@@ -267,9 +300,9 @@ export class ConstructionDataService {
     {
       id: 'sector-67-designer-estate',
       title: 'Soho Corridor Designer Estate',
-      category: 'Stilt+4 Floors',
+      category: 'Builder Floors',
       location: 'Sector-67, Golf Course Extension',
-      plotOrSize: '500 Sq. Yards · Stilt + 4 Floors',
+      plotOrSize: '500 Sq. Yards · Multi-Floor Residence',
       status: 'Delivered',
       description: 'Flagship builder floor estate executed under Naveen Sharma with double-height living room, 8-SUV stilt parking, Schindler elevator, and rooftop entertainment pergola.',
       features: ['8 SUV Stilt Parking', 'Schindler Capsule Lift', 'Zero Cost Escalation Delivery'],

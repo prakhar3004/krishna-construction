@@ -41,6 +41,8 @@
     max-width: 100vw;
   }
 
+
+
   body {
     background-color: var(--void);
     color: var(--cream);
@@ -155,3 +157,215 @@
 .luxury-btn:hover::after {
   left: 100%;
 }
+
+/* ==========================================================================
+   ARCHITECTURAL LUXURY LIGHT THEME (Warm Alabaster, Rich Amber-Gold, Deep Stone)
+   ========================================================================== */
+html.light {
+  color-scheme: light;
+  --ink: #FFFFFF;
+  --void: #F5F2EB;
+  --card: #FFFFFF;
+  --card-hover: #F8F6F0;
+  --cream: #1C1917;
+  --cream-soft: #44403C;
+  --cream-faint: #78716C;
+  --gold: #A16207;
+  --gold-light: #CA8A04;
+  --gold-bright: #EAB308;
+  --primary: #1D4ED8;
+  --azure: #0369A1;
+  --rule: rgba(180, 145, 60, 0.18);
+}
+
+html.light body {
+  background-color: #F5F2EB;
+  color: #1C1917;
+  background-image: 
+    radial-gradient(ellipse 80% 40% at 50% -10%, rgba(212, 175, 55, 0.12), transparent),
+    radial-gradient(ellipse 60% 30% at 85% 40%, rgba(3, 105, 161, 0.05), transparent),
+    linear-gradient(to right, rgba(120, 113, 108, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(120, 113, 108, 0.07) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* Base dark container resets for Light Mode */
+html.light .bg-\[\#080807\],
+html.light .bg-\[\#070A0F\],
+html.light .bg-\[\#04060A\],
+html.light .bg-\[\#0E0E0C\] {
+  background-color: #ECE8DE !important;
+}
+
+html.light .bg-\[\#070A0F\]\/95,
+html.light .bg-\[\#070A0F\]\/98,
+html.light .bg-\[\#070A0F\]\/90 {
+  background-color: rgba(245, 242, 235, 0.96) !important;
+}
+
+html.light .bg-\[\#0E0E0C\]\/90 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(180, 145, 60, 0.35) !important;
+  box-shadow: 0 8px 30px rgba(44, 39, 32, 0.12) !important;
+}
+
+/* Cards & Panels: Crisp Warm White with Architectural Depth */
+html.light .bg-\[\#0B1019\],
+html.light .bg-\[\#0E1420\],
+html.light .bg-\[\#161512\],
+html.light .bg-\[\#0A0A08\] {
+  background-color: #FFFFFF !important;
+  border-color: rgba(180, 145, 60, 0.25) !important;
+  box-shadow: 0 4px 20px rgba(44, 39, 32, 0.05);
+}
+
+html.light .bg-\[\#0B1019\]\/70,
+html.light .bg-\[\#0B1019\]\/60 {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(180, 145, 60, 0.28) !important;
+}
+
+/* Strip dark gradients so they don't paint pitch black in Light Mode */
+html.light [class*="from-\[\#0B1019\]"],
+html.light [class*="from-\[\#070A0F\]"],
+html.light [class*="from-\[\#161512\]"],
+html.light [class*="from-\[\#121824\]"],
+html.light [class*="from-\[\#12100C\]"],
+html.light [class*="from-\[\#14120D\]"],
+html.light [class*="from-\[\#0F172A\]"],
+html.light [class*="from-\[\#0B132B\]"],
+html.light [class*="via-\[\#121824\]"],
+html.light [class*="via-\[\#1A160F\]"],
+html.light [class*="via-\[\#1E1911\]"],
+html.light [class*="via-\[\#101B38\]"],
+html.light [class*="to-\[\#0B1019\]"],
+html.light [class*="to-\[\#0A0A08\]"],
+html.light [class*="to-\[\#12100C\]"],
+html.light [class*="to-\[\#14120D\]"],
+html.light [class*="to-\[\#070A0F\]"],
+html.light [class*="to-\[\#0B132B\]"] {
+  background-image: none !important;
+  background-color: #FFFFFF !important;
+}
+
+html.light .hover\:bg-\[\#1A1916\]:hover {
+  background-color: rgba(180, 145, 60, 0.15) !important;
+}
+
+/* High Contrast Headings & Body Typography */
+html.light .text-\[\#F8FAFC\],
+html.light .text-\[\#F7F4EE\] {
+  color: #1C1917 !important;
+}
+
+html.light .text-\[\#F8FAFC\]\/85,
+html.light .text-\[\#F8FAFC\]\/80,
+html.light .text-\[\#F8FAFC\]\/75,
+html.light .text-\[\#F8FAFC\]\/70,
+html.light .text-\[\#F7F4EE\]\/85,
+html.light .text-\[\#F7F4EE\]\/80,
+html.light .text-\[\#F7F4EE\]\/70 {
+  color: #44403C !important;
+}
+
+html.light .text-\[\#F8FAFC\]\/60,
+html.light .text-\[\#F8FAFC\]\/55,
+html.light .text-\[\#F8FAFC\]\/50,
+html.light .text-\[\#F7F4EE\]\/60 {
+  color: #78716C !important;
+}
+
+/* Rich Gold & Azure Tones in Light Mode */
+html.light .text-\[\#D4AF37\] {
+  color: #A16207 !important;
+}
+
+html.light .text-\[\#38BDF8\] {
+  color: #0369A1 !important;
+}
+
+html.light .bg-\[\#D4AF37\]\/10,
+html.light .bg-\[\#D4AF37\]\/15 {
+  background-color: rgba(202, 138, 4, 0.12) !important;
+}
+
+html.light .bg-\[\#38BDF8\]\/10,
+html.light .bg-\[\#38BDF8\]\/15 {
+  background-color: rgba(3, 105, 161, 0.1) !important;
+}
+
+/* Borders & Dividing Rules */
+html.light .border-\[\#F8FAFC\]\/10,
+html.light .border-\[\#F8FAFC\]\/15,
+html.light .border-\[\#F8FAFC\]\/20,
+html.light .border-\[\#F8FAFC\]\/25,
+html.light .border-\[\#F7F4EE\]\/10,
+html.light .border-\[\#F7F4EE\]\/5 {
+  border-color: rgba(120, 113, 108, 0.18) !important;
+}
+
+html.light .border-\[\#D4AF37\]\/20,
+html.light .border-\[\#D4AF37\]\/25,
+html.light .border-\[\#D4AF37\]\/30,
+html.light .border-\[\#D4AF37\]\/35,
+html.light .border-\[\#D4AF37\]\/40 {
+  border-color: rgba(180, 145, 60, 0.3) !important;
+}
+
+/* Glass Card styling in Light Mode */
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-color: rgba(180, 145, 60, 0.3) !important;
+  box-shadow: 0 12px 36px rgba(44, 39, 32, 0.08) !important;
+}
+
+html.light .glass-card:hover {
+  border-color: rgba(180, 145, 60, 0.6) !important;
+  box-shadow: 0 16px 44px rgba(44, 39, 32, 0.12) !important;
+}
+
+/* Header & Footer in Light Mode */
+html.light header {
+  background-color: rgba(245, 242, 235, 0.95) !important;
+  border-bottom-color: rgba(180, 145, 60, 0.28) !important;
+  box-shadow: 0 4px 20px rgba(44, 39, 32, 0.05);
+}
+
+html.light footer {
+  background-color: #ECE8DE !important;
+  border-top-color: rgba(180, 145, 60, 0.25) !important;
+}
+
+/* Icon Pop in Light Mode */
+html.light svg.text-\[\#D4AF37\] {
+  color: #A16207 !important;
+}
+
+html.light svg.text-\[\#38BDF8\] {
+  color: #0369A1 !important;
+}
+
+/* Form Controls & Inputs in Light Mode */
+html.light input:not([type="range"]):not([type="radio"]),
+html.light select,
+html.light textarea {
+  background-color: #FFFFFF !important;
+  color: #1C1917 !important;
+  border-color: rgba(180, 145, 60, 0.35) !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #78716C !important;
+}
+
+html.light select option {
+  background-color: #FFFFFF !important;
+  color: #1C1917 !important;
+}
+
+html.light .bg-\[\#1F1E1B\] {
+  background-color: #E2DDD2 !important;
+}
+
+

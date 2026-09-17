@@ -1,31 +1,12 @@
 <div class="relative min-h-screen bg-[#080807] text-[#F7F4EE] selection:bg-[#D4AF37] selection:text-[#080807] overflow-x-hidden">
-  <!-- Sticky Global Luxury Navigation (Single Line Brand Heading) -->
+  <!-- Sticky Global Luxury Navigation -->
   <app-navbar></app-navbar>
 
   <main>
-    <!-- 1. Hero & Fast Quote Form (Buildhood Style) -->
-    <app-three-stage></app-three-stage>
-
-    <!-- 2. Brands Strip, 3 Services, 2 Contract Models, 4 Packages, 4 Steps, 4 Advantages -->
-    <app-packages-and-models></app-packages-and-models>
-
-    <!-- 3. Interactive Plot Construction Cost Estimator -->
-    <app-cost-calculator></app-cost-calculator>
-
-    <!-- 4. Projects Showcase (In-Progress & Completed) -->
-    <app-projects-showcase></app-projects-showcase>
-
-    <!-- 5. Client Testimonials -->
-    <app-testimonials></app-testimonials>
-
-    <!-- 6. Ready to Build Your Dream Home Banner & Lead Capture -->
-    <app-contact-section></app-contact-section>
-
-    <!-- 7. Frequently Asked Questions -->
-    <app-faq-section></app-faq-section>
+    <router-outlet></router-outlet>
   </main>
 
-  <!-- Complete RERA Compliant Footer & Sitemap -->
+  <!-- Clean Footer & Sitemap -->
   <app-footer></app-footer>
 
   <!-- Persistent Floating Dialers & WhatsApp Trigger -->

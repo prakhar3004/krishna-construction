@@ -116,7 +116,7 @@ import { ConstructionDataService } from '../../services/construction-data.servic
             <div class="pt-2 space-y-2">
               <button 
                 type="submit"
-                class="luxury-btn bg-[#B5562C] hover:bg-[#97431F] text-[#F7F4EE] py-3 px-5 rounded-lg text-xs font-mono uppercase tracking-wider font-semibold w-full flex items-center justify-center gap-2 shadow-xl shadow-[#B5562C]/20 border border-[#B5562C]"
+                class="luxury-btn bg-[#25D366] hover:bg-[#1EBE5D] text-[#080807] py-3 px-5 rounded-xl text-xs font-mono uppercase tracking-wider font-bold w-full flex items-center justify-center gap-2 shadow-xl shadow-[#25D366]/20 transition-all cursor-pointer"
               >
                 <span>Send via WhatsApp Desk</span>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

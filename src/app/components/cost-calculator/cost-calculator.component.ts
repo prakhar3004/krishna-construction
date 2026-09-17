@@ -8,16 +8,16 @@ import { ConstructionDataService } from '../../services/construction-data.servic
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <section id="calculator" class="py-12 sm:py-16 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto relative z-10">
+    <section id="calculator" class="pt-5 pb-5 sm:pt-7 sm:pb-7 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
       <!-- Section Title (Buildhood Style) -->
-      <div class="text-center max-w-3xl mx-auto mb-10">
-        <span class="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
+      <div class="text-center max-w-3xl mx-auto mb-5">
+        <span class="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
           Cost Estimator
         </span>
-        <h2 class="mt-3 text-3xl sm:text-4xl font-bold text-[#F8FAFC]">
+        <h2 class="mt-2 text-2xl sm:text-3xl font-bold text-[#F8FAFC]">
           Interactive Plot Construction Cost Estimator
         </h2>
-        <p class="mt-3 text-sm sm:text-base text-[#F8FAFC]/75 leading-relaxed">
+        <p class="mt-1.5 text-xs sm:text-sm text-[#F8FAFC]/75 leading-relaxed">
           Quickly calculate your turnkey construction budget based on plot size, floors, and specifications. Calibrated to 2026 Gurugram benchmark rates.
         </p>
       </div>
@@ -37,13 +37,13 @@ import { ConstructionDataService } from '../../services/construction-data.servic
               </span>
             </div>
 
-            <!-- Quick Pill Buttons -->
-            <div class="grid grid-cols-5 gap-2 mb-4">
+            <!-- Quick Pill Buttons (Responsive) -->
+            <div class="grid grid-cols-5 gap-1.5 sm:gap-2 mb-4">
               @for (size of plotPresets; track size) {
                 <button 
                   type="button"
                   (click)="dataService.selectedPlotSqYards.set(size)"
-                  class="py-2.5 rounded text-xs font-mono tracking-wider transition-all duration-300"
+                  class="py-2 sm:py-2.5 px-1 sm:px-2 rounded text-[11px] sm:text-xs font-mono tracking-wider transition-all duration-300"
                   [class.bg-[#D4AF37]]="dataService.selectedPlotSqYards() === size"
                   [class.text-[#080807]]="dataService.selectedPlotSqYards() === size"
                   [class.font-bold]="dataService.selectedPlotSqYards() === size"
@@ -138,7 +138,7 @@ import { ConstructionDataService } from '../../services/construction-data.servic
                 [class.border-[#F7F4EE]/10]="dataService.selectedTier() !== 'luxury'"
                 [class.bg-[#080807]]="dataService.selectedTier() !== 'luxury'"
               >
-                <span class="absolute top-2 right-2 px-1.5 py-0.5 rounded text-[0.55rem] font-mono uppercase bg-[#B5562C] text-[#FFF]">Most Popular</span>
+                <span class="absolute top-2 right-2 px-1.5 py-0.5 rounded text-[0.55rem] font-mono uppercase bg-[#D4AF37] text-[#080807] font-bold">Most Popular</span>
                 <div>
                   <span class="text-xs font-mono uppercase tracking-wider block font-bold text-[#F7F4EE]">Luxury</span>
                   <span class="text-sm font-display text-[#D4AF37] font-semibold mt-1 block">₹2,850 / sq.ft</span>
@@ -171,11 +171,11 @@ import { ConstructionDataService } from '../../services/construction-data.servic
         </div>
 
         <!-- Output & Instant Quote Summary (5 cols) -->
-        <div class="lg:col-span-5 glass-card rounded-2xl p-7 sm:p-9 border border-[#D4AF37]/40 shadow-2xl relative overflow-hidden bg-gradient-to-b from-[#161512] to-[#0A0A08]">
+        <div class="lg:col-span-5 rounded-2xl p-5 sm:p-6 border-2 border-[#D4AF37]/40 shadow-2xl relative overflow-hidden bg-[#0B1019]">
           <!-- Corner Ambient Light -->
           <div class="absolute -top-12 -right-12 w-40 h-40 bg-[#D4AF37]/15 rounded-full blur-3xl pointer-events-none"></div>
 
-          <div class="flex items-center justify-between pb-4 border-b border-[#F7F4EE]/10 mb-6">
+          <div class="flex items-center justify-between pb-3 border-b border-[#F7F4EE]/10 mb-4">
             <span class="text-xs font-mono uppercase tracking-widest text-[#D4AF37]">
               Turnkey Cost Estimate
             </span>
@@ -185,40 +185,40 @@ import { ConstructionDataService } from '../../services/construction-data.servic
           </div>
 
           <!-- Big Price Output -->
-          <div class="mb-6">
-            <span class="text-xs font-mono text-[#F7F4EE]/50 uppercase tracking-widest block mb-1">
+          <div class="mb-4">
+            <span class="text-xs font-mono text-[#F7F4EE]/50 uppercase tracking-widest block mb-0.5">
               Estimated Project Investment
             </span>
-            <div class="text-4xl sm:text-5xl font-display font-medium text-[#F7F4EE] tracking-tight">
+            <div class="text-3xl sm:text-4xl font-display font-medium text-[#F7F4EE] tracking-tight">
               ₹{{ formatCrore(res().totalCost) }}
-              <span class="text-xl sm:text-2xl font-normal text-[#D4AF37]">
+              <span class="text-lg sm:text-xl font-normal text-[#D4AF37]">
                 {{ res().totalCost >= 10000000 ? 'Crore' : 'Lakhs' }}
               </span>
             </div>
-            <div class="text-xs font-mono text-[#D97746] mt-1">
+            <div class="text-xs font-mono text-[#D97746] mt-0.5">
               ≈ ₹{{ res().ratePerSqFt.toLocaleString() }} per sq.ft built-up
             </div>
           </div>
 
           <!-- Key Metrics Pills -->
-          <div class="grid grid-cols-2 gap-3 mb-6">
-            <div class="bg-[#080807] p-3 rounded-lg border border-[#F7F4EE]/10">
-              <span class="text-[0.65rem] font-mono text-[#F7F4EE]/50 block uppercase">Total Built-Up Area</span>
-              <span class="text-base font-display text-[#F7F4EE] font-semibold mt-0.5 block">
+          <div class="grid grid-cols-2 gap-2.5 mb-4">
+            <div class="bg-[#080807] p-2.5 rounded-lg border border-[#F7F4EE]/10">
+              <span class="text-[0.62rem] font-mono text-[#F7F4EE]/50 block uppercase">Total Built-Up Area</span>
+              <span class="text-sm font-display text-[#F7F4EE] font-semibold mt-0.5 block">
                 {{ res().totalBuiltUpSqFt.toLocaleString() }} sq.ft
               </span>
             </div>
 
-            <div class="bg-[#080807] p-3 rounded-lg border border-[#F7F4EE]/10">
-              <span class="text-[0.65rem] font-mono text-[#F7F4EE]/50 block uppercase">Estimated Delivery</span>
-              <span class="text-base font-display text-[#D4AF37] font-semibold mt-0.5 block">
+            <div class="bg-[#080807] p-2.5 rounded-lg border border-[#F7F4EE]/10">
+              <span class="text-[0.62rem] font-mono text-[#F7F4EE]/50 block uppercase">Estimated Delivery</span>
+              <span class="text-sm font-display text-[#D4AF37] font-semibold mt-0.5 block">
                 ~{{ res().durationMonths }} Months
               </span>
             </div>
           </div>
 
           <!-- Component Cost Breakdown -->
-          <div class="space-y-2.5 mb-8 pb-6 border-b border-[#F7F4EE]/10 text-xs font-mono">
+          <div class="space-y-2 mb-5 pb-4 border-b border-[#F7F4EE]/10 text-xs font-mono">
             <span class="text-[0.65rem] font-mono uppercase tracking-widest text-[#F7F4EE]/50 block mb-2">
               Itemized Allocation Breakdown:
             </span>
@@ -262,12 +262,13 @@ import { ConstructionDataService } from '../../services/construction-data.servic
               <span>Send Estimate to Naveen Sharma (WhatsApp)</span>
             </a>
 
-            <button 
-              (click)="dataService.openConsultationModal('Book On-Site Plot Inspection')"
-              class="luxury-btn border border-[#D4AF37]/50 hover:border-[#D4AF37] text-[#D4AF37] hover:text-[#FFF] px-6 py-3 rounded font-mono text-xs tracking-wider w-full justify-center"
+            <a 
+              [href]="dataService.getWhatsAppUrl('Hello Naveen Ji, I want to book an on-site soil and plot inspection for my plot in Gurugram / Delhi NCR.')"
+              target="_blank"
+              class="luxury-btn border border-[#D4AF37]/50 hover:border-[#D4AF37] text-[#D4AF37] hover:text-[#FFF] px-6 py-3 rounded font-mono text-xs tracking-wider w-full justify-center flex items-center text-center block"
             >
-              Book On-Site Soil & Plot Inspection
-            </button>
+              Book On-Site Soil & Plot Inspection &rarr;
+            </a>
           </div>
         </div>
       </div>
@@ -283,8 +284,8 @@ export class CostCalculatorComponent {
   readonly floorOptions = [
     { count: 2, title: 'G + 1 Villa', sub: 'Compact Duplex' },
     { count: 3, title: 'G + 2 Floors', sub: 'Independent Villa' },
-    { count: 4, title: 'Stilt + 4 Floors', sub: 'Gurugram Standard' },
-    { count: 5, title: 'Basement + S+4', sub: 'Full Built Potential' }
+    { count: 4, title: '4-Storey Floors', sub: 'Multi-Floor Residence' },
+    { count: 5, title: 'Basement + 4 Floors', sub: 'Maximum Space & Parking' }
   ];
 
   getFloorLabel(count: number): string {

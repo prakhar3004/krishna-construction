@@ -13,23 +13,23 @@ interface FAQItem {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <section id="faq" class="py-12 sm:py-16 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto relative z-10">
+    <section id="faq" class="pt-5 pb-5 sm:pt-7 sm:pb-7 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
       
       <!-- Section Header (Buildhood Style) -->
-      <div class="text-center max-w-3xl mx-auto mb-10">
-        <span class="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
+      <div class="text-center max-w-3xl mx-auto mb-4">
+        <span class="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[#D4AF37]">
           FAQ
         </span>
-        <h2 class="mt-3 text-3xl sm:text-4xl font-bold text-[#F8FAFC]">
+        <h2 class="mt-2 text-2xl sm:text-3xl font-bold text-[#F8FAFC]">
           Frequently Asked Questions
         </h2>
-        <p class="mt-3 text-sm sm:text-base text-[#F8FAFC]/75 leading-relaxed">
+        <p class="mt-1.5 text-xs sm:text-sm text-[#F8FAFC]/75 leading-relaxed">
           Common questions about our packages, contract models, building permissions, and warranties.
         </p>
       </div>
 
       <!-- FAQ Accordion Grid -->
-      <div class="max-w-4xl mx-auto space-y-3">
+      <div class="max-w-4xl mx-auto space-y-2.5">
         @for (item of faqs; track item.question; let i = $index) {
           <div 
             class="rounded-2xl border transition-all duration-300 overflow-hidden shadow"
@@ -41,23 +41,23 @@ interface FAQItem {
             <button 
               type="button"
               (click)="toggleFAQ(i)"
-              class="w-full py-5 px-6 text-left flex items-center justify-between gap-4 cursor-pointer"
+              class="w-full py-3.5 px-5 text-left flex items-center justify-between gap-4 cursor-pointer"
             >
-              <span class="font-display text-base sm:text-lg text-[#F7F4EE] font-normal leading-snug">
+              <span class="font-display text-sm sm:text-base text-[#F7F4EE] font-medium leading-snug">
                 {{ item.question }}
               </span>
               <div 
-                class="w-8 h-8 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] flex-shrink-0 transition-transform duration-300"
+                class="w-7 h-7 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] flex-shrink-0 transition-transform duration-300"
                 [class.rotate-180]="openIndex() === i"
               >
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
               </div>
             </button>
 
             @if (openIndex() === i) {
-              <div class="px-6 pb-6 pt-1 border-t border-[#F7F4EE]/5">
+              <div class="px-5 pb-4 pt-1 border-t border-[#F7F4EE]/5">
                 <p class="text-xs sm:text-sm text-[#F7F4EE]/80 font-light leading-relaxed m-0">
                   {{ item.answer }}
                 </p>
@@ -68,16 +68,16 @@ interface FAQItem {
       </div>
 
       <!-- Quick Desk Assistance Strip -->
-      <div class="mt-10 p-6 rounded-2xl bg-gradient-to-r from-[#12100C] via-[#1A160F] to-[#12100C] border border-[#D4AF37]/30 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+      <div class="mt-4 p-4 sm:p-5 rounded-2xl bg-[#0B1019] border-2 border-[#D4AF37]/40 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3 max-w-4xl mx-auto">
         <div>
-          <h4 class="font-display text-lg text-[#F7F4EE] m-0">Have a specific plot in Sector 57, 67, or Golf Course Extn?</h4>
-          <p class="text-xs text-[#F7F4EE]/60 font-mono mt-1 m-0">Talk directly to Naveen Sharma for a customized feasibility check & layout draft.</p>
+          <h4 class="font-display text-sm sm:text-base font-bold text-[#F7F4EE] m-0">Have a specific plot in Sector 57, 67, or Golf Course Extn?</h4>
+          <p class="text-xs text-[#F7F4EE]/70 font-mono mt-0.5 m-0">Talk directly to Naveen Sharma for a customized feasibility check &amp; layout draft.</p>
         </div>
 
         <a 
           [href]="'https://wa.me/91' + dataService.primaryPhone + '?text=Hello%20Naveen%20Ji,%20I%20have%20a%20question%20regarding%20my%20plot%20construction%20in%20Gurugram.'"
           target="_blank"
-          class="luxury-btn bg-[#25D366] hover:bg-[#1EBE5D] text-black font-mono text-xs font-bold px-5 py-2.5 rounded-full flex items-center gap-2 whitespace-nowrap flex-shrink-0"
+          class="luxury-btn bg-[#25D366] hover:bg-[#1EBE5D] text-black font-mono text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 whitespace-nowrap flex-shrink-0"
         >
           <span>Ask On WhatsApp</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,8 +105,8 @@ export class FaqSectionComponent {
       category: 'Contracts'
     },
     {
-      question: 'Can you construct a Stilt + 4 Floors building on my Gurugram plot?',
-      answer: 'Yes. We construct Stilt + 4 floors fully compliant with HSVP and DTCP Haryana bye-laws, including soil load-bearing certification, Seismic Zone IV raft foundations, rainwater harvesting pits, and final Occupancy Certificate (OC).',
+      question: 'What types of residential construction and builder floors do you build in Gurugram?',
+      answer: 'We construct all types of residential projects &mdash; from bespoke duplex villas and independent luxury kothis to multi-storey builder floors. All construction adheres strictly to HSVP and DTCP Haryana bye-laws, Seismic Zone IV structural parameters, and Occupancy Certificate (OC) norms.',
       category: 'Approvals'
     },
     {
